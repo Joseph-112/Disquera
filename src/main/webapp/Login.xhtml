@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"    
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Disquera</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Validation">
+                <h:panelGrid columns="4" cellpadding="5" id="grid">
+                    <h:outputLabel for="username" value="Username: " />
+                    <p:inputText id="username" value="#{loginController.username}" required="true" label="Name"/>
+                    <p:message for="username" />
+                    <h:outputText value="#{loginController.username}" />
+
+                    <h:outputText value="Password: " />
+                    <p:password id="nonFeedback" value="#{loginController.password}" required="true"/>
+                    <p:message for="nonFeedback" />
+                    <p:commandButton value="Log in" action="#{loginController.validate}" update="grid" icon="pi pi-check" />
+                    <h:outputText id="display" value="#{loginController.password}" />
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
