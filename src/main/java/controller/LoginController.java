@@ -6,24 +6,62 @@
 package controller;
 
 import encapsulamiento.DAOAdmin;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import pojo.User;
+import services.LoginService;
 
 /**
  *
  * @author Joseph
  */
 @Named(value = "loginController")
-@SessionScoped
+@RequestScoped
 public class LoginController implements Serializable {
 
     private String username;
     private String password;
     private DAOAdmin validar;
+    
+    @Inject
+    private LoginSession loginSession;
+
+    public LoginController() {
+    }
+
+    
+    
+    public void Login() throws IOException {
+        //System.out.println("Entro " + name + " " + password);
+        LoginService service = new LoginService();        
+        FacesContext context = FacesContext.getCurrentInstance();        
+        User usuario = service.login(username, password);
+        if(usuario != null) {            
+            loginSession.setKey(usuario.getId());
+            context.addMessage(null, new FacesMessage("Éxito",  "Bienvenido " + usuario.getUsername()));
+            context.getExternalContext().redirect("index.xhtml");
+        } else {        
+            loginSession.setKey(-1);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Usuario y Contraseña incorrecto") );
+        }    
+    }
+    
+    public void cerrarSesion() {
+        loginSession.setKey(-1);
+        FacesContext context = FacesContext.getCurrentInstance();        
+        context.getExternalContext().invalidateSession();        
+    }
+
     /**
      * Obtains person's username to compare
-     * @return 
+     *
+     * @return
      */
     public String getUsername() {
         return username;
@@ -31,7 +69,8 @@ public class LoginController implements Serializable {
 
     /**
      * Assign the username
-     * @param username 
+     *
+     * @param username
      */
     public void setUsername(String username) {
         this.username = username;
@@ -39,7 +78,8 @@ public class LoginController implements Serializable {
 
     /**
      * Obtains the password to compare
-     * @return 
+     *
+     * @return
      */
     public String getPassword() {
         return password;
@@ -47,7 +87,8 @@ public class LoginController implements Serializable {
 
     /**
      * Assign the password
-     * @param password 
+     *
+     * @param password
      */
     public void setPassword(String password) {
         this.password = password;
@@ -55,7 +96,8 @@ public class LoginController implements Serializable {
 
     /**
      * Method to validate data
-     * @return 
+     *
+     * @return
      */
     public DAOAdmin getValidar() {
         return validar;
@@ -63,21 +105,11 @@ public class LoginController implements Serializable {
 
     /**
      * Set DAOAdmin object
-     * @param validar 
+     *
+     * @param validar
      */
     public void setValidar(DAOAdmin validar) {
         this.validar = validar;
     }
-    
-    public String validate(){
-        String redirect = "";
-        validar = new DAOAdmin();
-        if (validar.validateAdmin(username, password) == true) {
-            redirect="/addArtist";
-        }else{
-            redirect = "/Login";            
-        }
-        return redirect;
-    }
-    
+
 }

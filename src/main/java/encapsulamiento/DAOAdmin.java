@@ -7,7 +7,7 @@ package encapsulamiento;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import persistencia.Admin;
+import pojo.User;
 
 /**
  *
@@ -23,12 +23,12 @@ public class DAOAdmin {
      * @param password
      * @return 
      */
-    public boolean validateAdmin(String username,String password){
-        Admin administrator = new Admin();
+    /*public boolean validateAdmin(String username,String password){
+        User user = new User();
         boolean exist = false;
-        if (administrator.getUsername().equals(username) && administrator.getPassword().equals(password)) {
+        /*if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
             exist = true;
         }
-        return exist;
-    }
+        return exist;*
+    }*/
 }
