@@ -15,7 +15,7 @@ import pojo.User;
 public class LoginService {
     
     public User login(String name, String password) {
-        if(name.equals("johans") && password.equals("1234")) {
+        if(name.equals("Nicolas") && password.equals("1234")) {
             FacesContext context = FacesContext.getCurrentInstance();
             User user = new User(1070, "Johans", "González", "Administrador");
             context.getExternalContext().getSessionMap().put(user.getId()+ "", user);

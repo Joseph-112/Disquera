@@ -5,7 +5,7 @@
  */
 package controller;
 
-import encapsulamiento.DAOAdmin;
+import model.DAOAdmin;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -34,8 +34,6 @@ public class LoginController implements Serializable {
 
     public LoginController() {
     }
-
-    
     
     public void Login() throws IOException {
         //System.out.println("Entro " + name + " " + password);
@@ -45,7 +43,7 @@ public class LoginController implements Serializable {
         if(usuario != null) {            
             loginSession.setKey(usuario.getId());
             context.addMessage(null, new FacesMessage("Éxito",  "Bienvenido " + usuario.getUsername()));
-            context.getExternalContext().redirect("index.xhtml");
+            context.getExternalContext().redirect("addArtist.xhtml");
         } else {        
             loginSession.setKey(-1);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Usuario y Contraseña incorrecto") );
