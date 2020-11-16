@@ -5,10 +5,8 @@
  */
 package controller;
 
-import model.DAOAdmin;
 import java.io.IOException;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -27,35 +25,59 @@ public class LoginController implements Serializable {
 
     private String username;
     private String password;
-    private DAOAdmin validar;
-    
+    private User user;
+
     @Inject
     private LoginSession loginSession;
 
     public LoginController() {
     }
-    
-    public void Login() throws IOException {
+
+    /**
+     * Method to validate user's data
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void Login() throws IOException, ClassNotFoundException {
         //System.out.println("Entro " + name + " " + password);
-        LoginService service = new LoginService();        
-        FacesContext context = FacesContext.getCurrentInstance();        
-        User usuario = service.login(username, password);
-        if(usuario != null) {            
+        LoginService service = new LoginService();
+        FacesContext context = FacesContext.getCurrentInstance();
+        user = service.login(username, password);
+        context.addMessage(null, new FacesMessage("Éxito", "Bienvenido " + username));
+        context.getExternalContext().getSessionMap().put(user.getId() + "", user);
+
+        if (user != null) {
+            loginSession.setKey(user.getId());
+            context.addMessage(null, new FacesMessage("Éxito", "Bienvenido " + user.getUsername()));
+            context.getExternalContext().redirect("addArtist.xhtml");
+        } else {
+            loginSession.setKey(-1);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario y Contraseña incorrecto"));
+
+        }
+
+        if (user.getRol().equalsIgnoreCase("Administrador")) {
+            context.getExternalContext().redirect("addArtist.xhtml");
+        } else {
+            context.getExternalContext().redirect("addArtist.xhtml");
+        }
+
+        /*if(usuario != null) {            
             loginSession.setKey(usuario.getId());
             context.addMessage(null, new FacesMessage("Éxito",  "Bienvenido " + usuario.getUsername()));
             context.getExternalContext().redirect("addArtist.xhtml");
         } else {        
             loginSession.setKey(-1);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Usuario y Contraseña incorrecto") );
-        }    
+        }*/
     }
-    
-    public void cerrarSesion() {
+
+    /*public void cerrarSesion() {
         loginSession.setKey(-1);
         FacesContext context = FacesContext.getCurrentInstance();        
         context.getExternalContext().invalidateSession();        
-    }
-
+    }*/
     /**
      * Obtains person's username to compare
      *
@@ -90,24 +112,6 @@ public class LoginController implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * Method to validate data
-     *
-     * @return
-     */
-    public DAOAdmin getValidar() {
-        return validar;
-    }
-
-    /**
-     * Set DAOAdmin object
-     *
-     * @param validar
-     */
-    public void setValidar(DAOAdmin validar) {
-        this.validar = validar;
     }
 
 }

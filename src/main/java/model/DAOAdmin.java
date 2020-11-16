@@ -5,30 +5,55 @@
  */
 package model;
 
-import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import pojo.User;
+import model.DBConnection;
 
 /**
  *
  * @author Joseph
  */
-@Named(value = "dAOAdmin")
-@RequestScoped
 public class DAOAdmin {
-    
+
+    User user = new User();
+    Connection conn = null;
+    Statement stm;
+    ResultSet result;
+
     /**
-     * Validate user's data
+     * Obtains user's data
      * @param username
      * @param password
-     * @return 
+     * @return
+     * @throws ClassNotFoundException 
      */
-    /*public boolean validateAdmin(String username,String password){
+    public User validateUser(String username, String password) throws ClassNotFoundException {
+
         User user = new User();
-        boolean exist = false;
-        /*if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-            exist = true;
-        }
-        return exist;*
-    }*/
+        try {
+            conn = DBConnection.getConnection();
+            stm = conn.createStatement();
+            result = stm.executeQuery("SELECT * FROM disquera.user WHERE password = '" + password + "' AND name = '" + username + "'");
+            if (!result.next()) {
+                System.out.println("No existe un usuario con esa contraseña");
+                conn.close();
+                return null;
+                
+            }else{
+                user.setId(result.getInt("id_user"));
+                user.setUsername(result.getString("name"));
+                user.setRol(result.getString("rol"));
+                System.out.println("Id: " + user.getId() + "\n Name: " + user.getUsername() + "\n Rol: " + user.getRol());
+                conn.close();
+                return user;
+            }
+            
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+            return null;
+        }        
+    }
 }

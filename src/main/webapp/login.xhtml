@@ -71,7 +71,8 @@
                 <!--<h:outputLabel for="password" value ="Password: " />-->
                 <p:inputText id="password" type="password" placeholder="Contraseña" value = "#{loginController.password}" required="true"/>
                 <p:message for="password"/>               
-                <p:commandButton class="butt" actionListener="#{loginController.Login()}" value="enviar" update="formulario" ></p:commandButton>
+                <h:commandButton class="butt" actionListener="#{loginController.Login()}" value="enviar"  ></h:commandButton>
+            
             </h:form>
         </div>    
     </h:body>

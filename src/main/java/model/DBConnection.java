@@ -15,11 +15,12 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    public Connection getConnection() throws ClassNotFoundException {
-        Connection con = null;
-        String url = "jdbc:postgresql://localhost:5432/disquera";
-        String user = "postgres";
-        String password = "postgres";
+    static Connection con = null;
+    static final String url = "jdbc:postgresql://localhost:5432/disquera";
+    static final String user = "postgres";
+    static final String password = "postgres";
+
+    public static Connection getConnection() throws ClassNotFoundException {
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -27,9 +28,18 @@ public class DBConnection {
             System.out.println("Connection completed.");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        } finally {
         }
         return con;
+    }
+
+    public static void close() {
+        try {
+            if (con != null) {
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Error: No se logró cerrar conexión:\n" + e);
+        }
     }
 
 }
