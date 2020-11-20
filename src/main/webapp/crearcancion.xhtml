@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CrearCancion | ChameleonDisc</title>
+        <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <h:body>
+        <div class="logo">
+            <img src="imag/logo.png" heigth="80" alt="Go to index"></img>;
+        </div>
+        <div class="general">
+            <div class="contmenu">
+                <br></br>
+                <h1 class="tituloadmin">ADMINISTRADOR</h1>
+                <h:form>
+                    <p:growl>
+                        <p:autoUpdate />
+                    </p:growl>
+                    <p:menu class="menuu" >
+                        <p:submenu label="AGREGAR">
+                            <p:menuitem value="Crear artista" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            <p:menuitem value="Crear albúm" action="#{menuView.save}" icon="pi pi-save" />
+                            <p:menuitem value="Crear cancion" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            <p:menuitem value="Crear genero" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        </p:submenu>
+
+                        <p:submenu label="ESTADISTICAS">
+                            <p:menuitem value="estadistica album" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="estadistica cancion" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="estadistica artista" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="estadistica genero" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </div>
+            <div class="contdatos">
+                <div class="cuadrocrear">
+                    <h:form id="formulario">
+                        <h1 class="titulo">Crear Canción</h1>
+                        <p:inputText type="text" class="butt" id="nombrecancion" placeholder="Nombre cancion" value="#{loginController.username}" required="true"/> 
+                        <p:inputText type="text" class="butt" id="valorcancion" placeholder="valor cancion" value="#{loginController.username}" required="true"/>
+                        <p:selectOneMenu  class="butt" value="#{selectOneMenuView.console}" style="width:125px">
+                            <f:selectItem itemLabel="Artista" itemValue="" /><!--se supone que estos items se traen de la base de datos-->
+                            <f:selectItem itemLabel="BD?" itemValue="BD?" />
+                            <f:selectItem itemLabel="BD?" itemValue="BD?" />
+                            <f:selectItem itemLabel="BD?" itemValue="BD?" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu class="butt" value="#{selectOneMenuView.console}" style="width:125px">
+                            <f:selectItem itemLabel="Album" itemValue="" /><!--se supone que estos items se traen de la base de datos-->
+                            <f:selectItem itemLabel="BD?" itemValue="BD?" />
+                            <f:selectItem itemLabel="BD?" itemValue="BD?" />
+                            <f:selectItem itemLabel="BS?" itemValue="BD?" />
+                        </p:selectOneMenu>             
+                        <h:commandButton class="butt" actionListener="#{loginController.Login()}" value="agregar"  ></h:commandButton>
+                    </h:form>
+                </div>    
+                <br></br>
+            </div>
+        </div> 
+        <br></br>
+    </h:body>
+</html>
+
