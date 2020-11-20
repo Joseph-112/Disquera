@@ -50,7 +50,7 @@ public class LoginController implements Serializable {
         if (user != null) {
             loginSession.setKey(user.getId());
             context.addMessage(null, new FacesMessage("Éxito", "Bienvenido " + user.getUsername()));
-            context.getExternalContext().redirect("addArtist.xhtml");
+            
         } else {
             loginSession.setKey(-1);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario y Contraseña incorrecto"));
@@ -58,9 +58,9 @@ public class LoginController implements Serializable {
         }
 
         if (user.getRol().equalsIgnoreCase("Administrador")) {
-            context.getExternalContext().redirect("addArtist.xhtml");
+            context.getExternalContext().redirect("admin.xhtml");
         } else {
-            context.getExternalContext().redirect("addArtist.xhtml");
+            context.getExternalContext().redirect("login.xhtml");
         }
 
         /*if(usuario != null) {            
