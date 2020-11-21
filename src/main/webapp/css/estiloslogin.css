@@ -9,7 +9,7 @@ body{
 }
 .logo{
     width:100%;
-}
+} 
 img{
     width:300px;
     heigth:auto;
@@ -65,3 +65,6 @@ h1.titulo{
     cursor: pointer;
 }
 
+.cambioParaHacerPushEliminar{
+    border:0;
+}
