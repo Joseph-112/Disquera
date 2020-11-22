@@ -45,15 +45,15 @@
                     <br></br>
                     <h2>AGREGAR ARTISTA</h2>
                     <br></br>
-                    <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{loginController.username}" required="true"/>
-                    <p:inputText type="text" id="artistanacion" class="campotexto" placeholder="Nacionalidad" value="#{loginController.username}" required="true"/>
+                    <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{crearartistaController.username}" required="true"/>
+                    <p:inputText type="text" id="artistanacion" class="campotexto" placeholder="Nacionalidad" value="#{crearartistaController.nacionalidad}" required="true"/>
                     <p:datePicker id="popup" class="campotexto" placeholder="Fecha nacimiento" value="#{calendarView.date2}" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
                     <h3>Foto del artista</h3>
                     <br></br>
                     <p:fileUpload listener="#{fileUploadView.handleFileUpload}" class="campotexto" mode="simple" dragDropSupport="false"
                                   sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     <p:growl id="messages" showDetail="true" /> 
-                    <h:commandButton class="botones" actionListener="#{loginController.Login()}" value="crear"  ></h:commandButton>
+                    <h:commandButton class="botones" actionListener="#{crearartistaController.enviardatos}" value="crear"  ></h:commandButton>
                 </h:form>
             </div>
         </div> 

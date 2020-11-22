@@ -25,17 +25,17 @@
                     </p:growl>
                     <p:menu class="menu" >
                         <p:submenu label="AGREGAR">
-                            <p:menuitem value="Crear artista" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="Crear albúm" action="#{menuView.save}" icon="pi pi-save" />
-                            <p:menuitem value="Crear cancion" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="Crear genero" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="Crear artista" action="#{adminController.crearArtista()}"/>
+                            <p:menuitem value="Crear albúm" action="#{adminController.crearAlbum()}"/>
+                            <p:menuitem value="Crear cancion" action="#{adminController.crearCancion()}" />
+                            <p:menuitem value="Crear genero"/>
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
-                            <p:menuitem value="estadistica album" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
-                            <p:menuitem value="estadistica cancion" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
-                            <p:menuitem value="estadistica artista" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
-                            <p:menuitem value="estadistica genero" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="estadistica album" action="#{adminController.estadisticasAlbum()}"/>
+                            <p:menuitem value="estadistica cancion" action="#{adminController.estadisticaCancion()}"/>
+                            <p:menuitem value="estadistica artista" action="#{adminController.estadisticasArtista()}"/>
+                            <p:menuitem value="estadistica genero"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>

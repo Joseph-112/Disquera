@@ -25,14 +25,14 @@
                     </p:growl>
                     <p:menu class="menu" >
                         <p:submenu label="AGREGAR">
-                            <p:menuitem value="ver artistas" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver albúm's" action="#{menuView.save}" icon="pi pi-save" />
-                            <p:menuitem value="ver canciones" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver generos" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="ver artistas" action="#{userController.verArtista()}"  icon="pi pi-refresh" />
+                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" icon="pi pi-save" />
+                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"  icon="pi pi-refresh" />
+                            <p:menuitem value="ver generos" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
                         </p:submenu>
 
                         <p:submenu label="CARRITO">
-                            <p:menuitem value="MIS PEDIDOS" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
