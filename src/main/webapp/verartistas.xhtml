@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>VerArtistas | ChameleonDisc</title>
+
+        <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <h:body>
+        <div>
+            <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
+        </div>
+        <div class="bigcuadro">
+            <div class="contmenu">
+                <br></br>
+                <h3 class="tit">USUARIO</h3> <!--no se si llamar aca de la base de datos el nombre-->
+                <h:form>
+                    <p:growl>
+                        <p:autoUpdate />
+                    </p:growl>
+                    <p:menu class="menu" >
+                        <p:submenu label="AGREGAR">
+                            <p:menuitem value="ver artistas" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            <p:menuitem value="ver albúm's" action="#{menuView.save}" icon="pi pi-save" />
+                            <p:menuitem value="ver canciones" action="#{menuView.update}"  icon="pi pi-refresh" />
+                            <p:menuitem value="ver generos" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        </p:submenu>
+
+                        <p:submenu label="CARRITO">
+                            <p:menuitem value="MIS PEDIDOS" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </div>
+            <div class="contdatos">
+                <div>
+                    <h2>VER ARTISTAS</h2>
+                    <br></br>
+                    <h3>ARTISTAS REGISTRADOS</h3>
+                    <br></br><br></br>
+                    <p:selectOneMenu id="consoleieee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
+                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
+                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
+                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
+                    </p:selectOneMenu>
+                    <br></br><br></br><br></br>
+                    <h3>Album's del artista</h3>
+                    <p:selectOneMenu id="consoleeee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
+                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
+                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
+                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
+                    </p:selectOneMenu>
+                    <br></br><br></br>
+                    <h3>Canciones del album</h3>
+                    <p:selectOneMenu id="consoleee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
+                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
+                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
+                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
+                    </p:selectOneMenu>
+                    <br></br><br></br>
+                    <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="ir al inicio"  ></h:commandButton>
+                </div>
+            </div>
+        </div> 
+        <br></br>
+    </h:body>
+</html>
+

@@ -3,68 +3,67 @@
     padding: 0px;
 }
 body{
-    background: #34B426;
-    /*background: url(../imag/lodo.png);*/
+    background: url(../imag/fondaco.png);
     background-size: cover;
 }
 .logo{
-    width:100%;
-} 
-img{
-    width:300px;
-    heigth:auto;
-    margin: 0 auto;
+    width:250px;
+    heigth:250px;
+    margin:0 auto;
+    margin-left: 30px;
     display:block;
-    margin-top: 65px;
-    margin-bottom: -100px;
-    border-radius: 10px;    
+    margin-top:25px;
+    margin-bottom:-120px;
+    border-radius:10px;
 }
-.cuadro{
-    width:330px;
-    background:#090909;
+h1{
+    margin-top:130px;
+    margin-bottom: 30px;
+    display:block;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 30;
+    
+}
+.cuadrologin{ /*cuadro*/
+    width: 330px;
+    background: rgba(0,0,0,0.5);/*rgba(41,215,22,0.5)*/
+    padding: 5px 5px 40px 5px;
     color:#ffffff;
-    margin:auto;
-    margin-top:120px;
-    padding:5px 5px 30px 5px;
-    border-top:5px;/*#2ecc71*/
-    border-rigth: 5px;
-    border-left: 5px;
-    border-buttom: 5px solid #2ecc71;
-    border-radius: 6px;
-}
-.cuadro input[type="text"],.cuadro input[type="password"]{
     display:block;
     margin:0 auto;
     text-align: center;
-    width: 150px;
-    heigth: 45px;
-    border-radius:6px;
-    baxkground: black;
+    margin-top:100px;
+    border: black 5px solid;
+    border-top-color: #33ff33;
+    border-right-color: #33ff33;
+    border-bottom-color: #33ff33;
+    border-left-color: #33ff33;
+    border-radius: 15px;
+}
+.campodetexto{/*entrada*/
+    width:300px;/*ancho*/
+    height: 35px;/*alto*/
+    display:block;
+    margin:0 auto;
+    text-align: center;
+    border-radius: 16px;
     margin-bottom: 15px;
-    color:#2ecc71;
-    font-size:15px;
+    border: #33ff33 3px solid;
+    background: rgb(0,0,0);
+    color:#ffffff;
 }
-h1.titulo{
-    margin-bottom: 20px;
+.botones{/**/
+    width:150px;/*ancho*/
+    height: 40px;/*alto*/
+    display:block;
+    margin:0 auto;
     text-align: center;
-    font-size:30px;
-    font-family: fantasy;
-}
-.butt{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2ecc71;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
-}
-
-.cambioParaHacerPushEliminar{
-    border:0;
+    border-radius: 16px;
+    margin-top:20px;
+    margin-bottom: 10px;
+    border: #33ff33 3px solid;
+    background: rgba(0,0,0,0.7);
+    font-weight: 500;
+    color:#ffffff;
 }

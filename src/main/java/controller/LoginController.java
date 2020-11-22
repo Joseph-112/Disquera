@@ -58,7 +58,7 @@ public class LoginController implements Serializable {
         }
 
         if (user.getRol().equalsIgnoreCase("Administrador")) {
-            context.getExternalContext().redirect("admin.xhtml");
+            context.getExternalContext().redirect("Admin.xhtml");
         } else {
             context.getExternalContext().redirect("login.xhtml");
         }

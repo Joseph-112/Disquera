@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>CrearCanción | ChameleonDisc</title>
+        <title>CrearAlbum | ChameleonDisc</title>
         <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -43,26 +43,25 @@
             <div class="contdatos">
                 <h:form>
                     <br></br>
-                    <h2>AGREGAR CANCIÓN</h2>
+                    <h2>AGREGAR ALBUM</h2>
                     <br></br>
                     <h3>Seleccione el artista del album</h3>
                     <br></br>
-                    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" placeholder="ARTISTA" style="width:125px">
+                    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+                        <f:selectItem itemLabel="ARTISTAS" itemValue="" />
                         <f:selectItem itemLabel="Bd?" itemValue="artista1" />
                         <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
                         <f:selectItem itemLabel="Bd?" itemValue="artista3" />
                     </p:selectOneMenu>
                     <br></br><br></br>
-                    <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Cancion" value="#{loginController.username}" required="true"/>
+                    <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Album" value="#{loginController.username}" required="true"/>
                     <p:inputText type="text" id="valoralbum" class="campotexto" placeholder="valor en pesos colombianos" value="#{loginController.username}" required="true"/> 
-                    <h3>Seleccione el album al que pertenece</h3>
+                    <h3>Seleccione las canciones que tendra el album</h3>
                     <br></br>
-                    <p:selectOneMenu id="consolee" placeholder="ALBUM" value="#{selectOneMenuView.console}" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="Album" />
-                        <f:selectItem itemLabel="Bd?" itemValue="Album" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="Album" />
-                    </p:selectOneMenu>
-                    <br></br>
+                    <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="canciones"
+                                          filterMatchMode="startsWith" panelStyle="width:250px">
+                        <f:selectItems value="#{checkboxView.cities}" /> <!--https://www.primefaces.org/showcase/ui/input/checkboxMenu.xhtml-->
+                    </p:selectCheckboxMenu>
                     <h:commandButton class="botones" actionListener="#{loginController.Login()}" value="crear"  ></h:commandButton>
                 </h:form>
 

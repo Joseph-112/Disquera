@@ -4,75 +4,27 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Login | ChameleonDisc</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <style>
-            body{
-                margin: 0;
-                padding: 0;
-                background: #34495e;
-                font-family: sans-serif;
-            }
-            .dives{
-                margin: 0 auto;
-                border-radius: 25px;
-                border-color: #ffffff;
-                align-items: center;
-                padding: 40px;
-                position: absolute center;
-                margin-top: 8%;
-                background: #191919;
-                text-aling: center;
-            }
-            .dives input[type="text"],.dives input[type="password"]{
-                border:0;
-                background: none;
-                display: block;
-                margin: 20px auto;
-                text-align: center;
-                border: 2px solid #3498db;
-                padding: 14px 10px;
-                width: 200px;
-                outline: none;
-                color: white;
-                border-radius: 24px;
-                transition: 0.25s;
-            }
-            .dives h1{
-                color: white;
-                text-align: center;
-                text-transform: uppercase;
-                font-weight: 500;
-            }
-            .butt{
-                border:0;
-                background: none;
-                display: block;
-                margin: 20px auto;
-                text-align: center;
-                border: 2px solid #2ecc71;
-                padding: 14px 40px;
-                outline: none;
-                color: white;
-                border-radius: 24px;
-                transition: 0.25s;
-                cursor: pointer;
-            }
-        </style>
+        <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <div class="dives">
-            <h1>Login</h1>
+
+        <div class="cuadrologin">
+            <div>
+                <img class="logo" src="imag/logo.png" alt=""/>
+            </div>
+            <h1 class="titulo">Login</h1>
             <h:form id="formulario">
                 <p:growl id="growl" showDetail="true" sticky="true" /> 
                 <!--<h:outputLabel for="username" value ="Nombre: " />-->
-                <p:inputText type="text" id="username" placeholder="UserName" value="#{loginController.username}" required="true"/> 
+                <p:inputText type="text" id="username" class="campodetexto" placeholder="UserName" value="#{loginController.username}" required="true"/> 
                 <p:message for="username"/>                                
                 <!--<h:outputLabel for="password" value ="Password: " />-->
-                <p:inputText id="password" type="password" placeholder="Contraseña" value = "#{loginController.password}" required="true"/>
+                <p:inputText id="password" type="password" class="campodetexto" placeholder="Contraseña" value = "#{loginController.password}" required="true"/>
                 <p:message for="password"/>               
-                <h:commandButton class="butt" actionListener="#{loginController.Login()}" value="enviar"  ></h:commandButton>
-            
+                <h:commandButton class="botones" actionListener="#{loginController.Login()}" value="enviar"  ></h:commandButton>
+
             </h:form>
         </div>    
     </h:body>

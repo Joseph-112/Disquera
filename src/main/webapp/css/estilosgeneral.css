@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background: url(../imag/fondaco.png);
+    background-size: cover;
+}
+.logo{
+    width:300px;
+    heigth:auto;
+    margin: 0 auto;
+    display:block;
+    margin-top: 5px;
+    margin-bottom: -100px;
+    border-radius: 10px;
+}
+.imaguser{
+    width:500px;
+    heigth:auto;
+    margin: 0 auto;
+    display:block;
+    margin-top: 5px;
+    margin-bottom: -100px;
+    border-radius: 10px;
+}
+.tit{
+    margin-top:10px;
+    margin-bottom: 20px;
+    display:block;
+    font-size: 3;
+    ;
+}
+.bigcuadro{ /*cuadro*/
+    width: 1030px;/*ancho*/
+    height: 430px;
+    background: rgba(0,0,0,0.5);/*rgba(41,215,22,0.5)*/
+    padding: 5px 5px 40px 5px;
+    color:#ffffff;
+    display:block;
+    margin:0 auto;
+    text-align: center;
+    margin-top:100px;
+    border: black 5px solid;
+    border-top-color: #33ff33;
+    border-right-color: #33ff33;
+    border-bottom-color: #33ff33;
+    border-left-color: #33ff33;
+    border-radius: 15px;
+}
+
+.contmenu{
+    width: 235px;/*ancho*/
+    background: rgba(0,0,0,0.5);/*rgba(41,215,22,0.5)*/
+    padding: 5px 5px 40px 5px;
+    color:#ffffff;
+    float:left;
+    margin-left: 10px;
+    margin-top: 5px;
+    border: black 5px solid;
+    border-top-color: rgba(255,255,255,0.5);
+    border-right-color: rgba(255,255,255,0.5);
+    border-bottom-color: rgba(255,255,255,0.5);
+    border-left-color: rgba(255,255,255,0.5);
+    border-radius: 15px;
+}
+.contdatos{
+    width: 720px;/*ancho*/
+    height: 400px;
+    background: rgba(0,0,0,0.5);/*rgba(41,215,22,0.5)*/
+    padding: 5px 5px 40px 5px;
+    color:#ffffff;
+    float:left;
+    margin-top: 5px;
+    margin-left:15px;
+    border: black 5px solid;
+    border-top-color: #33ff33;
+    border-right-color: #33ff33;
+    border-bottom-color: #33ff33;
+    border-left-color: #33ff33;
+    border-radius: 15px;
+}
+.campotexto{/*entrada*/
+    width:300px;/*ancho*/
+    height: 35px;/*alto*/
+    display:block;
+    margin:0 auto;
+    text-align: center;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    border: #33ff33 3px solid;
+    background: rgb(0,0,0);
+    color:#ffffff;
+}
+.bot{/**/
+    width:150px;/*ancho*/
+    height: 40px;/*alto*/
+    display:block;
+    margin:0 auto;
+    text-align: center;
+    border-radius: 16px;
+    margin-top:20px;
+    margin-bottom: 10px;
+    border: #33ff33 3px solid;
+    background: rgba(0,0,0,0.7);
+    font-weight: 500;
+    color:#ffffff;
+}
