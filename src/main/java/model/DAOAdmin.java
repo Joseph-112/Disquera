@@ -32,6 +32,7 @@ public class DAOAdmin {
      */
     public User validateUser(String username, String password) throws ClassNotFoundException {
 
+        
         User user = new User();
         try {
             conn = DBConnection.getConnection();
@@ -47,6 +48,8 @@ public class DAOAdmin {
                 user.setUsername(result.getString("name"));
                 user.setRol(result.getString("rol"));
                 System.out.println("Id: " + user.getId() + "\n Name: " + user.getUsername() + "\n Rol: " + user.getRol());
+                result.close();
+                stm.close();
                 conn.close();
                 return user;
             }
@@ -55,5 +58,9 @@ public class DAOAdmin {
             ex.getStackTrace();
             return null;
         }        
+    }
+    
+    public void insertArtist(String name , int genre ){
+        
     }
 }
