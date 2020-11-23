@@ -45,9 +45,30 @@
                     <br></br>
                     <h2>AGREGAR ARTISTA</h2>
                     <br></br>
-                    <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{crearartistaController.username}" required="true"/>
-                    <p:inputText type="text" id="artistanacion" class="campotexto" placeholder="Nacionalidad" value="#{crearartistaController.nacionalidad}" required="true"/>
-                    <p:datePicker id="fechanacimiento" class="campotexto" placeholder="Fecha nacimiento" value="#{calendarView.date2}" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
+                    <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{crearartistaController.nombreartista}" required="true"/>
+                    <p:selectOneMenu id="country" value="#{crearartistaController.country.id_nationality}">
+                        <f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+                        <f:selectItems value="#{crearartistaController.countryList()}"/>
+                        <f:ajax execute="country" render="cSelected"/>
+                    </p:selectOneMenu>
+                    <br></br>
+                    <p:outputLabel value="#{crearartistaController.country.country}"/>
+                    <p:outputLabel id="cSelected" value="#{crearartistaController.country.id_nationality}"/>
+                    <br></br>
+                    <br></br>
+                    <p:selectOneMenu id="genre" value="#{crearartistaController.musicGenre.id_genre}">
+                        <f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+                        <f:selectItems value="#{crearartistaController.genreList()}"/>
+                        <f:ajax execute="genre" render="gSelected"/>
+                    </p:selectOneMenu>
+                    <br></br>
+                    <p:outputLabel value="#{crearartistaController.musicGenre.genre}"/>
+                    <p:outputLabel id="gSelected" value="#{crearartistaController.musicGenre.id_genre}"/>
+
+                    <p:datePicker id="fechanacimiento" class="campotexto" placeholder="Fecha nacimiento" value="#{calendarView.date2}" /> 
+                    <p:outputLabel for="spanish" value="Spanish:" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
+                    <p:datePicker id="birthday" class="campotexto" value="#{calendarView.date9}" placeholder="Fecha nacimiento" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
+
                     <h3>Foto del artista</h3>
                     <br></br>
                     <p:fileUpload id="fotoartista" listener="#{crearartistaController.fechanacimiento}" class="campotexto" mode="simple" dragDropSupport="false"

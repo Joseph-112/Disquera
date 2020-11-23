@@ -1,32 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>CrearArtista | ChameleonDisc</title>
+        <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
+        <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     </h:head>
-    <h:body >
-        <!-- <h:panelGroup layout="block" style="text-align: center;">
-            <h1><p:outputLabel  value="#{msg.artista}"/></h1>
-        </h:panelGroup> -->
-        <h:form id="formulario">
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
-                <!--<h:outputLabel for="username" value ="Nombre: " />-->
-                <p:inputText type="text" id="username" placeholder="UserName" value="#{loginController.username}" required="true"/> 
-                <p:message for="username"/>                                
-                <!--<h:outputLabel for="password" value ="Password: " />-->
-                <p:inputText id="password" type="password" placeholder="Contraseña" value = "#{loginController.password}" required="true"/>
-                <p:message for="password"/>               
-                <h:commandButton class="butt" actionListener="#{loginController.Login()}" value="enviar"  ></h:commandButton>
-            
-            </h:form>
+    <h:body>
+        <div>
+            <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
+        </div>
+        <div class="bigcuadro">
+            <div class="contmenu">
+                <br></br>
+                <h3 class="tit">ADMINISTRADOR</h3>
+                <h:form>
+                    <p:growl>
+                        <p:autoUpdate />
+                    </p:growl>
+                    <p:menu class="menu" >
+                        <p:submenu label="AGREGAR">
+                            <p:menuitem value="Crear artista" action="#{adminController.crearArtista()}"/>
+                            <p:menuitem value="Crear albúm" action="#{adminController.crearAlbum()}"/>
+                            <p:menuitem value="Crear cancion" action="#{adminController.crearCancion()}" />
+                            <p:menuitem value="Crear genero" action="#{adminController.verestadisticas()}"/>
+                        </p:submenu>
+
+                        <p:submenu label="ESTADISTICAS">
+                            <p:menuitem value="estadistica album" action="#{adminController.estadisticasAlbum()}"/>
+                            <p:menuitem value="estadistica cancion" action="#{adminController.estadisticaCancion()}"/>
+                            <p:menuitem value="estadistica artista" action="#{adminController.estadisticasArtista()}"/>
+                            <p:menuitem value="estadistica genero"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </div>
+            <div class="contdatos">
+                <h:form>
+                    <br></br>
+                    <h2>AGREGAR ARTISTA</h2>
+                    <br></br>
+                    <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{crearartistaController.username}" required="true"/>
+                    <p:inputText type="text" id="artistanacion" class="campotexto" placeholder="Nacionalidad" value="#{crearartistaController.nacionalidad}" required="true"/>
+                    <p:datePicker id="fechanacimiento" class="campotexto" placeholder="Fecha nacimiento" value="#{calendarView.date2}" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
+                    <h3>Foto del artista</h3>
+                    <br></br>
+                    <p:fileUpload id="fotoartista" listener="#{crearartistaController.fechanacimiento}" class="campotexto" mode="simple" dragDropSupport="false"
+                                  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                    <p:growl id="messages" showDetail="true" /> 
+                    <h:commandButton class="botones" actionListener="#{crearartistaController.enviardatos}" value="crear"  ></h:commandButton>
+                </h:form>
+            </div>
+        </div> 
+        <br></br>
     </h:body>
 </html>
