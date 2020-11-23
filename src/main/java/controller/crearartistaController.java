@@ -40,8 +40,8 @@ public class crearartistaController implements Serializable {
     private Genre musicGenre;
     private String nombreartista;
     private Date fechanacimiento;
-    private String ruta = "C://Users//josep//Desktop//Personal//Universidad//Línea de profundización 1//Trabajos//ProyectoDisquera//Web Pages//artistPhotos";
-    private String ruta_temporal = "..//artistPhotos";
+    private String ruta = "C://Users//josep//Desktop//Personal//Universidad//Línea de profundización 1//Trabajos//ProyectoDisquera//Web Pages//artistPhotos/";
+    private String ruta_temporal = "..//artistPhotos/";
     private String nacionalidad;
 
     /**
