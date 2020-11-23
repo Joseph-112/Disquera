@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>CrearArtista | ChameleonDisc</title>
+        <title>CrearGenero | ChameleonDisc</title>
         <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -43,20 +43,16 @@
             <div class="contdatos">
                 <h:form>
                     <br></br>
-                    <h2>AGREGAR ARTISTA</h2>
+                    <h2>AGREGAR GENERO MUSICAL</h2>
                     <br></br>
-                    <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{crearartistaController.username}" required="true"/>
-                    <p:inputText type="text" id="artistanacion" class="campotexto" placeholder="Nacionalidad" value="#{crearartistaController.nacionalidad}" required="true"/>
-                    <p:datePicker id="fechanacimiento" class="campotexto" placeholder="Fecha nacimiento" value="#{calendarView.date2}" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
-                    <h3>Foto del artista</h3>
                     <br></br>
-                    <p:fileUpload id="fotoartista" listener="#{crearartistaController.fechanacimiento}" class="campotexto" mode="simple" dragDropSupport="false"
-                                  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                    <p:growl id="messages" showDetail="true" /> 
-                    <h:commandButton class="botones" actionListener="#{crearartistaController.enviardatos}" value="crear"  ></h:commandButton>
+                    <p:inputText type="text" id="nombregenero" class="campotexto" placeholder="Genero músical" value="#{crearalbumController.albumname}" required="true"/>
+                    <h:commandButton class="botones" actionListener="#{creargeneroController.enviardatos()}" value="crear"  ></h:commandButton>
                 </h:form>
+
             </div>
         </div> 
         <br></br>
     </h:body>
 </html>
+

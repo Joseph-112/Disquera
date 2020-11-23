@@ -5,8 +5,10 @@
  */
 package controller;
 
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -22,6 +24,7 @@ public class crearalbumController {
      */
     public crearalbumController() {
     }
+    
     public void enviardatos(){
         //System.out.println("entro: "+""+""); //imprime por consola
     }
