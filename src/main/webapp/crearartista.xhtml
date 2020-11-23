@@ -64,17 +64,15 @@
                     <br></br>
                     <p:outputLabel value="#{crearartistaController.musicGenre.genre}"/>
                     <p:outputLabel id="gSelected" value="#{crearartistaController.musicGenre.id_genre}"/>
-
-                    <p:datePicker id="fechanacimiento" class="campotexto" placeholder="Fecha nacimiento" value="#{calendarView.date2}" /> 
-                    <p:outputLabel for="spanish" value="Spanish:" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
-                    <p:datePicker id="birthday" class="campotexto" value="#{calendarView.date9}" placeholder="Fecha nacimiento" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
+ 
+                    <p:outputLabel for="birthday" value="Spanish:" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
+                    <p:datePicker id="birthday" class="campotexto" value="#{crearartistaController.fechanacimiento}" placeholder="Fecha nacimiento" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
 
                     <h3>Foto del artista</h3>
                     <br></br>
-                    <p:fileUpload id="fotoartista" listener="#{crearartistaController.fechanacimiento}" class="campotexto" mode="simple" dragDropSupport="false"
-                                  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                    <p:fileUpload id="fotoartista" listener="#{crearartistaController.handleFileUpload}" class="campotexto" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     <p:growl id="messages" showDetail="true" /> 
-                    <h:commandButton class="botones" actionListener="#{crearartistaController.enviardatos}" value="crear"  ></h:commandButton>
+                    <h:commandButton class="botones" actionListener="#{crearartistaController.sendData()}" value="Crear" type="submit" ></h:commandButton>
                 </h:form>
             </div>
         </div> 

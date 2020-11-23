@@ -6,11 +6,16 @@
 package model;
 
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pojo.User;
 import model.DBConnection;
+import org.primefaces.model.file.UploadedFile;
 
 /**
  *
@@ -25,14 +30,14 @@ public class DAOAdmin {
 
     /**
      * Obtains user's data
+     *
      * @param username
      * @param password
      * @return
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     public User validateUser(String username, String password) throws ClassNotFoundException {
 
-        
         User user = new User();
         try {
             conn = DBConnection.getConnection();
@@ -42,8 +47,8 @@ public class DAOAdmin {
                 System.out.println("No existe un usuario con esa contraseña");
                 conn.close();
                 return null;
-                
-            }else{
+
+            } else {
                 user.setId(result.getInt("id_user"));
                 user.setUsername(result.getString("name"));
                 user.setRol(result.getString("rol"));
@@ -53,14 +58,30 @@ public class DAOAdmin {
                 conn.close();
                 return user;
             }
-            
+
         } catch (SQLException ex) {
             ex.getStackTrace();
             return null;
-        }        
+        }
     }
-    
-    public void insertArtist(String name , int genre ){
-        
+
+    public boolean insertArtist(String name, int genre, int nationality, String photo, Date birthday) {
+        //Timestamp date = new Timestamp(birthday.get)
+        boolean success = false; 
+        try {
+            conn = DBConnection.getConnection();
+            stm = conn.createStatement();
+            stm.execute("INSERT INTO disquera.artist (name, photo, id_genre, id_nationality, birthday)" + "	VALUES ( '" + name + "', '" + photo + "', " + genre + " , " + nationality + " , '" + birthday + "');");
+            success = true;
+            //result.close();
+            stm.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return success;
     }
 }
