@@ -52,8 +52,8 @@
                     <h2>AGREGAR GENERO MUSICAL</h2>
                     <br></br>
                     <br></br>
-                    <p:inputText type="text" id="nombregenero" class="campotexto" placeholder="Genero músical" value="#{crearalbumController.albumname}" required="true"/>
-                    <h:commandButton class="botones" actionListener="#{creargeneroController.enviardatos()}" value="crear"  ></h:commandButton>
+                    <p:inputText type="text" id="nombregenero" class="campotexto" placeholder="Genero músical" value="#{creargeneroController.genre.genre}" required="true"/>
+                    <h:commandButton class="botones" actionListener="#{creargeneroController.enviardatos()}" value="crear" type="submit" ></h:commandButton>
                 </h:form>
 
             </div>

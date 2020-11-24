@@ -6,22 +6,48 @@
 package controller;
 
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import model.DAOGenre;
+import pojo.Genre;
 
 /**
  *
  * @author MontagutN
  */
 @Named(value = "creargeneroController")
-@Dependent
+@RequestScoped
 public class creargeneroController {
-    private String genero;
+
+    private Genre genre;
+
     /**
      * Creates a new instance of creargeneroController
      */
     public creargeneroController() {
+        genre = new Genre();
     }
-    public void enviardatos(){
-        System.out.println("entro: "+genero); //imprime por consola
+
+    public void enviardatos() {
+
+        boolean success = new DAOGenre().insertGenre(genre.getGenre());
+        if (success == true) {
+            System.out.println("Registrado con éxito");
+        } else {
+            System.out.println("Error");
+        }
+        System.out.println("Entro " + genre.getGenre());
+
     }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    
+
+    
 }

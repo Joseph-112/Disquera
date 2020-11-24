@@ -17,7 +17,7 @@
                 <h:commandButton class="bot" actionListener="#{adminController.cerrarSesion()}" value="Cerrar Sesión" type="submit" ></h:commandButton>
             </h:form>
         </div>
-        
+
         <div>
             <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
         </div>
@@ -51,25 +51,37 @@
                     <br></br>
                     <h2>AGREGAR CANCIÓN</h2>
                     <br></br>
-                    <h3>Seleccione el artista del album</h3>
+
+
+                    <h3>Seleccione el artista al que pertenece la canción</h3>
                     <br></br>
-                    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" placeholder="ARTISTA" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
+                    <p:selectOneMenu id="artist" value="#{crearcancion.artist.id_artist}">
+                        <f:selectItem itemLabel="--Artista--" itemValue=""/>
+                        <f:selectItems value="#{crearcancion.artistList()}"/>
+                        <f:ajax execute="artist" render="aSelected"/>
+                    </p:selectOneMenu>
+                    <br></br>
+                    <h3>Seleccione el album de la canción</h3>
+                    <br></br>
+                    <p:selectOneMenu id="album" value="#{crearcancion.album.id_album}">
+                        <f:selectItem itemLabel="--Album--" itemValue=""/>
+                        <f:selectItems value="#{crearcancion.albumList()}"/>
+                        <f:ajax execute="album" render="alSelected"/>
+                    </p:selectOneMenu>
+                    <br></br>
+                    <h3>Seleccione el género de la canción</h3>
+                    <br></br>
+                    <p:selectOneMenu id="genre" value="#{crearcancion.musicGenre.id_genre}">
+                        <f:selectItem itemLabel="--Genero musical--" itemValue=""/>
+                        <f:selectItems value="#{crearcancion.genreList()}"/>
+                        <f:ajax execute="genre" render="gSelected"/>
                     </p:selectOneMenu>
                     <br></br><br></br>
-                    <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Cancion" value="#{loginController.username}" required="true"/>
-                    <p:inputText type="text" id="valoralbum" class="campotexto" placeholder="valor en pesos colombianos" value="#{loginController.username}" required="true"/> 
-                    <h3>Seleccione el album al que pertenece</h3>
-                    <br></br>
-                    <p:selectOneMenu id="consolee" placeholder="ALBUM" value="#{selectOneMenuView.console}" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="Album" />
-                        <f:selectItem itemLabel="Bd?" itemValue="Album" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="Album" />
-                    </p:selectOneMenu>
-                    <br></br>
-                    <h:commandButton class="botones" actionListener="#{loginController.Login()}" value="crear"  ></h:commandButton>
+                    <p:inputText type="text" id="songName" class="campotexto" placeholder="Nombre Canción" value="#{crearcancion.song.name}" required="true"/>
+                    <br></br><br></br>
+                    <p:inputText type="numeric" id="songPrice" class="campotexto" placeholder="Precio Canción" value="#{crearcancion.song.price}" required="true"/>
+                    <br></br><br></br>
+                    <h:commandButton class="botones" actionListener="#{crearcancion.sendData()}" value="crear" type="submit" ></h:commandButton>
                 </h:form>
 
             </div>

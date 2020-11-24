@@ -84,4 +84,25 @@ public class DAOGenre {
         }
         return genre;
     }
+
+    public boolean insertGenre(String genreName) {
+        //Timestamp date = new Timestamp(birthday.get)
+        boolean success = false;
+        try {
+            conn = DBConnection.getConnection();
+            stm = conn.createStatement();
+            stm.execute("INSERT INTO disquera.genre (musical_genre) VALUES ( '" + genreName + "') ");
+            success = true;
+            //result.close();
+            stm.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return success;
+    }
+
 }
