@@ -40,9 +40,18 @@
                 <div>
                     <h2>VER ARTISTAS</h2>
                     <br></br>
-                    <h3>ARTISTAS REGISTRADOS</h3>
-                    <br></br><br></br>
+                    <h3>Artistas registrados</h3>
+                    <br></br>
                     <p:selectOneMenu id="consoleieee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
+                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
+                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
+                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
+                    </p:selectOneMenu>
+                    <br></br><br></br>
+
+                    <h3>Generos musicales</h3>
+                    
+                    <p:selectOneMenu id="consoleiieee" value="#{selectOneMenuView.console}" placeholder="GENEROS" style="width:125px">
                         <f:selectItem itemLabel="Bd?" itemValue="artista1" />
                         <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
                         <f:selectItem itemLabel="Bd?" itemValue="artista3" />
