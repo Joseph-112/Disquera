@@ -13,6 +13,12 @@
     </h:head>
     <h:body>
         <div>
+            <h:form>
+                <h:commandButton class="bot" actionListener="#{adminController.cerrarSesion()}" value="Cerrar Sesión" type="submit" ></h:commandButton>
+            </h:form>
+        </div>
+        
+        <div>
             <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
         </div>
         <div class="bigcuadro">
@@ -28,14 +34,14 @@
                             <p:menuitem value="Crear artista" action="#{adminController.crearArtista()}"/>
                             <p:menuitem value="Crear albúm" action="#{adminController.crearAlbum()}"/>
                             <p:menuitem value="Crear cancion" action="#{adminController.crearCancion()}" />
-                            <p:menuitem value="Crear genero" action="#{adminController.verestadisticas()}"/>
+                            <p:menuitem value="Crear genero" action="#{adminController.crearGenero()}"/>
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
                             <p:menuitem value="estadistica album" action="#{adminController.estadisticasAlbum()}"/>
-                            <p:menuitem value="estadistica cancion" action="#{adminController.estadisticaCancion()}"/>
+                            <p:menuitem value="estadistica cancion" action="#{adminController.estadisticasCancion()}"/>
                             <p:menuitem value="estadistica artista" action="#{adminController.estadisticasArtista()}"/>
-                            <p:menuitem value="estadistica genero"/>
+                            <p:menuitem value="estadistica genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
@@ -47,31 +53,32 @@
                     <br></br>
                     <p:inputText type="text" id="artistaname" class="campotexto" placeholder="Nombre Artista" value="#{crearartistaController.nombreartista}" required="true"/>
                     <p:selectOneMenu id="country" value="#{crearartistaController.country.id_nationality}">
-                        <f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+                        <f:selectItem itemLabel="--Nacionalidad--" itemValue=""/>
                         <f:selectItems value="#{crearartistaController.countryList()}"/>
                         <f:ajax execute="country" render="cSelected"/>
                     </p:selectOneMenu>
-                    <br></br>
+                    
                     <p:outputLabel value="#{crearartistaController.country.country}"/>
                     <p:outputLabel id="cSelected" value="#{crearartistaController.country.id_nationality}"/>
-                    <br></br>
-                    <br></br>
+                    
                     <p:selectOneMenu id="genre" value="#{crearartistaController.musicGenre.id_genre}">
-                        <f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+                        <f:selectItem itemLabel="--Genero musical--" itemValue=""/>
                         <f:selectItems value="#{crearartistaController.genreList()}"/>
                         <f:ajax execute="genre" render="gSelected"/>
                     </p:selectOneMenu>
                     <br></br>
                     <p:outputLabel value="#{crearartistaController.musicGenre.genre}"/>
                     <p:outputLabel id="gSelected" value="#{crearartistaController.musicGenre.id_genre}"/>
- 
-                    <p:outputLabel for="birthday" value="Spanish:" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
+                    <br></br>    
+                    <p:outputLabel for="birthday" value="" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
                     <p:datePicker id="birthday" class="campotexto" value="#{crearartistaController.fechanacimiento}" placeholder="Fecha nacimiento" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
 
                     <h3>Foto del artista</h3>
                     <br></br>
                     <p:fileUpload id="fotoartista" listener="#{crearartistaController.handleFileUpload}" class="campotexto" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     <p:growl id="messages" showDetail="true" /> 
+                    <br></br>
+                    <br></br>
                     <h:commandButton class="botones" actionListener="#{crearartistaController.sendData()}" value="Crear" type="submit" ></h:commandButton>
                 </h:form>
             </div>

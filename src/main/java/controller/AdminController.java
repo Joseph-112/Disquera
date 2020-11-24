@@ -36,19 +36,25 @@ public class AdminController implements Serializable {
     public void crearCancion() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/crearcancion.xhtml");
     }
-    /*public void crearGenero() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/crearalbum.xhtml");
-    }*/
+    public void crearGenero() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/creargenero.xhtml");
+    }
     public void estadisticasAlbum() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/Admin.xhtml");
     }
-    public void estadisticaCancion() throws IOException {
+    public void estadisticasCancion() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/Admin.xhtml");
     }
     public void estadisticasArtista() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/Admin.xhtml");
     }
+    public void estadisticasGenero() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/Admin.xhtml");
+    }
     public void verestadisticas() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/Admin.xhtml");
+    }
+    public void cerrarSesion() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/login.xhtml");
     }
 }   

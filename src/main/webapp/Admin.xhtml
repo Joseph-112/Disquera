@@ -6,12 +6,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Admin | ChameleonDisc</title>
-
+        <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </h:head>
     <h:body>
+        <div>
+            <h:form>
+                <h:commandButton class="bot" actionListener="#{adminController.cerrarSesion()}" value="Cerrar Sesión" type="submit" ></h:commandButton>
+            </h:form>
+        </div>
+        
         <div>
             <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
         </div>
@@ -28,14 +34,14 @@
                             <p:menuitem value="Crear artista" action="#{adminController.crearArtista()}"/>
                             <p:menuitem value="Crear albúm" action="#{adminController.crearAlbum()}"/>
                             <p:menuitem value="Crear cancion" action="#{adminController.crearCancion()}" />
-                            <p:menuitem value="Crear genero" action="#{adminController.verestadisticas()}"/>
+                            <p:menuitem value="Crear genero" action="#{adminController.crearGenero()}"/>
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
                             <p:menuitem value="estadistica album" action="#{adminController.estadisticasAlbum()}"/>
-                            <p:menuitem value="estadistica cancion" action="#{adminController.estadisticaCancion()}"/>
+                            <p:menuitem value="estadistica cancion" action="#{adminController.estadisticasCancion()}"/>
                             <p:menuitem value="estadistica artista" action="#{adminController.estadisticasArtista()}"/>
-                            <p:menuitem value="estadistica genero"/>
+                            <p:menuitem value="estadistica genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
