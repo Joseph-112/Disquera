@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>VerArtistas | ChameleonDisc</title>
+        <title>Ver Artistas | ChameleonDisc</title>
 
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,15 +24,14 @@
                         <p:autoUpdate />
                     </p:growl>
                     <p:menu class="menu" >
-                        <p:submenu label="AGREGAR">
-                            <p:menuitem value="ver artistas" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver albúm's" action="#{menuView.save}" icon="pi pi-save" />
-                            <p:menuitem value="ver canciones" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver generos" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        <p:submenu label="COMPRAR">
+                            <p:menuitem value="ver artistas" action="#{userController.verArtista()}" />
+                            <p:menuitem value="ver generos" action="#{userController.verGenero()}"/>
+                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" />
+                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"  />    
                         </p:submenu>
-
                         <p:submenu label="CARRITO">
-                            <p:menuitem value="MIS PEDIDOS" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
@@ -48,7 +47,7 @@
                         <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
                         <f:selectItem itemLabel="Bd?" itemValue="artista3" />
                     </p:selectOneMenu>
-                    <br></br><br></br><br></br>
+                    <br></br><br></br>
                     <h3>Album's del artista</h3>
                     <p:selectOneMenu id="consoleeee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
                         <f:selectItem itemLabel="Bd?" itemValue="artista1" />

@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
  *
  * @author MontagutN
  */
+
 @Named(value = "userController")
 @RequestScoped
 public class UserController {
@@ -28,16 +29,17 @@ public class UserController {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/verartistas.xhtml");
     }
     public void verAlbum() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");//no se que se hizo el xhtml de este
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/veralbum.xhtml");//no se que se hizo el xhtml de este
     }
     public void verCancion() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");//no se que se hizo el xhtml de este
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/comprarcancion.xhtml");//no se que se hizo el xhtml de este
     }
-    /*public void crearGenero() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/crearalbum.xhtml");
-    }*/
+
+    public void verGenero() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/vergenero.xhtml");
+    }
     public void pedidos() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/Admin.xhtml");// este no lo cree porque no sabia que ponerle
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");// este no lo cree porque no sabia que ponerle
     }
     
 }
