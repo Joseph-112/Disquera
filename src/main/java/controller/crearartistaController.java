@@ -17,8 +17,10 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import model.DAOAdmin;
+import model.DAOArtist;
 import model.DAOGenre;
 import model.DAONationality;
 import org.primefaces.event.FileUploadEvent;
@@ -31,7 +33,7 @@ import pojo.Nationality;
  * @author MontagutN
  */
 @Named(value = "crearartistaController")
-@RequestScoped
+@SessionScoped
 public class crearartistaController implements Serializable {
 
     private static List<SelectItem> genreList;
@@ -40,8 +42,9 @@ public class crearartistaController implements Serializable {
     private Genre musicGenre;
     private String nombreartista;
     private Date fechanacimiento;
-    private String ruta = "C://Users//josep//Desktop//Personal//Universidad//Línea de profundización 1//Trabajos//ProyectoDisquera//Web Pages//artistPhotos/";
-    private String ruta_temporal = "..//artistPhotos/";
+    private String ruta = "C:\\Users\\josep\\Desktop\\Personal\\Universidad\\Línea de profundización 1\\Trabajos\\ProyectoDisquera\\src\\main\\webapp\\artistPhotos\\";
+    //private String ruta_temporal = "~\\artistPhotos\\";
+    private String ruta_temporal = "C:\\Users\\josep\\Desktop\\Personal\\Universidad\\Línea de profundización 1\\Trabajos\\ProyectoDisquera\\src\\main\\webapp\\artistPhotos\\";
     private String nacionalidad;
 
     /**
@@ -53,9 +56,10 @@ public class crearartistaController implements Serializable {
         
     }
     
-    public void handleFileUpload(FileUploadEvent event) throws IOException {
+    public void handleFileUpload(FileUploadEvent event) {
         UploadedFile uploadedFile = event.getFile();
         String fileName = uploadedFile.getFileName();
+        System.out.println(ruta+uploadedFile.getFileName());
         byte[] contents = uploadedFile.getContent();
         try {
             this.ruta += fileName.replace(" ", "");
@@ -65,12 +69,14 @@ public class crearartistaController implements Serializable {
             fos.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(crearartistaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(crearartistaController.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
     
     public void sendData() {//recpcion y muestra de datos desde el boton por consola
 
-        boolean success = new DAOAdmin().insertArtist(getNombreartista(), musicGenre.getId_genre(),country.getId_nationality(),getRuta_temporal(),  getFechanacimiento());
+        boolean success = new DAOArtist().insertArtist(getNombreartista(), musicGenre.getId_genre(),country.getId_nationality(),getRuta_temporal(),  getFechanacimiento());
         if (success==true) {
             System.out.println("Registrado con éxito");
         }else{

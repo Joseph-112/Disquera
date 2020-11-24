@@ -47,22 +47,21 @@
                     <br></br>
                     <h3>Seleccione el artista del album</h3>
                     <br></br>
-                    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
-                        <f:selectItem itemLabel="ARTISTAS" itemValue="" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
+                    <p:selectOneMenu id="artist" value="#{crearalbumController.artist.id_artist}">
+                        <f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+                        <f:selectItems value="#{crearalbumController.artistList()}"/>
+                        <f:ajax execute="artist" render="aSelected"/>
                     </p:selectOneMenu>
-                    <br></br><br></br>
-                    <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Album" value="#{crearalbumController.albumname}" required="true"/>
-                    <p:inputText type="text" id="valoralbum" class="campotexto" placeholder="valor en pesos colombianos" value="#{crearalbumController.valoralbum}" required="true"/> 
-                    <h3>Seleccione las canciones que tendra el album</h3>
                     <br></br>
-                    <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="canciones"
-                                          filterMatchMode="startsWith" panelStyle="width:250px">
-                        <f:selectItems value="#{checkboxView.cities}" /> <!--https://www.primefaces.org/showcase/ui/input/checkboxMenu.xhtml-->
-                    </p:selectCheckboxMenu>
-                    <h:commandButton class="botones" actionListener="#{crearalbumController.enviardatos()}" value="crear"  ></h:commandButton>
+                    <p:outputLabel value="#{crearalbumController.artist.name}"/>
+                    <p:outputLabel id="gSelected" value="#{crearalbumController.artist.id_artist}"/>
+                    <br></br><br></br>
+                    <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Album" value="#{crearalbumController.album.name}" required="true"/>
+                    <p:inputText type="text" id="valoralbum" class="campotexto" placeholder="Valor en pesos colombianos" value="#{crearalbumController.album.price}" required="true"/> 
+    
+                    <br></br>
+                    
+                    <h:commandButton class="botones" type="Submit" actionListener="#{crearalbumController.sendData()}" value="crear"  ></h:commandButton>
                 </h:form>
             </div>
         </div> 

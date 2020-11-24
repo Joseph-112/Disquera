@@ -65,7 +65,7 @@ public class DAOAdmin {
         }
     }
 
-    public boolean insertArtist(String name, int genre, int nationality, String photo, Date birthday) {
+    /*public boolean insertArtist(String name, int genre, int nationality, String photo, Date birthday) {
         //Timestamp date = new Timestamp(birthday.get)
         boolean success = false; 
         try {
@@ -83,5 +83,5 @@ public class DAOAdmin {
             Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         return success;
-    }
+    }*/
 }
