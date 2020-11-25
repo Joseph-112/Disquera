@@ -5,17 +5,18 @@
  */
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 import model.DAOAlbum;
 import model.DAOArtist;
-import model.DAOGenre;
+import model.DAOSong;
 import pojo.Album;
 import pojo.Artist;
-import pojo.Genre;
 import pojo.Song;
 
 /**
@@ -23,17 +24,18 @@ import pojo.Song;
  * @author Joseph
  */
 @Named(value = "verArtistasController")
-@RequestScoped
-public class VerArtistasController {
+@ViewScoped
+public class VerArtistasController implements Serializable {
 
     private static List<SelectItem> artistList;
     private static List<SelectItem> albumList;
     private static List<SelectItem> songList;
-    private static List<SelectItem> genreList;
+    private int itemAlbum;
+    private int itemSong;
     private Artist artist;
     private Album album;
     private Song song;
-    
+
     /**
      * Creates a new instance of VerArtistasController
      */
@@ -41,18 +43,12 @@ public class VerArtistasController {
         artist = new Artist();
         album = new Album();
         song = new Song();
+        System.out.println("\n\nId artista:"+artist.getId_artist());
+        System.out.println("\n\nId artista:"+album.getId_album());
+        System.out.println("\n\nId artista:"+song.getId_song());
     }
-
-    public List<SelectItem> genreList() {
-        genreList = new ArrayList<SelectItem>();
-        List<Genre> genres;
-        genres = new DAOGenre().genreList();
-        for (Genre genre : genres) {
-            SelectItem countryItem = new SelectItem(genre.getId_genre(), genre.getGenre());
-            genreList.add(countryItem);
-        }
-        return genreList;
-    }
+    
+    
 
     public List<SelectItem> artistList() {
         artistList = new ArrayList<SelectItem>();
@@ -66,15 +62,44 @@ public class VerArtistasController {
     }
 
     public List<SelectItem> albumList() {
+
         albumList = new ArrayList<SelectItem>();
         List<Album> albums;
-        albums = new DAOAlbum().albumList();
+        if (artist.getId_artist() == null) {
+            albums = new DAOAlbum().albumList();
+        } else {
+            albums = new DAOAlbum().albumList(artist.getId_artist());
+        }
+
+        //albums = new DAOAlbum().albumList();
         for (Album album : albums) {
             SelectItem albumItem = new SelectItem(album.getId_album(), album.getName());
+            
             albumList.add(albumItem);
         }
         return albumList;
-    }    
+    }
+
+    public List<SelectItem> songList() {
+
+        songList = new ArrayList<SelectItem>();
+        List<Song> songs;
+        
+        
+        
+        if (album.getId_album() == null) {
+            songs = new DAOSong().songList();
+        } else {
+            songs = new DAOSong().songList(album.getId_album());
+        }
+
+        //albums = new DAOAlbum().albumList();
+        for (Song cancion : songs) {
+            SelectItem songItem = new SelectItem(cancion.getId_song(), cancion.getName());
+            songList.add(songItem);
+        }
+        return songList;
+    }
 
     public Artist getArtist() {
         return artist;
@@ -124,13 +149,23 @@ public class VerArtistasController {
         VerArtistasController.songList = songList;
     }
 
-    public static List<SelectItem> getGenreList() {
-        return genreList;
+    public int getItemAlbum() {
+        return itemAlbum;
     }
 
-    public static void setGenreList(List<SelectItem> genreList) {
-        VerArtistasController.genreList = genreList;
+    public void setItemAlbum(int itemAlbum) {
+        this.itemAlbum = itemAlbum;
     }
+
+    public int getItemSong() {
+        return itemSong;
+    }
+
+    public void setItemSong(int itemSong) {
+        this.itemSong = itemSong;
+    }
+
+
     
     
 }

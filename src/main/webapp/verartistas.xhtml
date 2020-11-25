@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>VerArtistas | ChameleonDisc</title>
+        <title>Ver Artistas | ChameleonDisc</title>
 
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,48 +24,58 @@
                         <p:autoUpdate />
                     </p:growl>
                     <p:menu class="menu" >
-                        <p:submenu label="AGREGAR">
-                            <p:menuitem value="ver artistas" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver albúm's" action="#{menuView.save}" icon="pi pi-save" />
-                            <p:menuitem value="ver canciones" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver generos" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        <p:submenu label="COMPRAR">
+                            <p:menuitem value="ver artistas" action="#{userController.verArtista()}" />
+                            <p:menuitem value="ver generos" action="#{userController.verGenero()}"/>
+                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" />
+                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"  />    
                         </p:submenu>
-
                         <p:submenu label="CARRITO">
-                            <p:menuitem value="MIS PEDIDOS" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
             </div>
-            <div class="contdatos">
-                <div>
-                    <h2>VER ARTISTAS</h2>
-                    <br></br>
-                    <h3>ARTISTAS REGISTRADOS</h3>
-                    <br></br><br></br>
-                    <p:selectOneMenu id="consoleieee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
-                    </p:selectOneMenu>
-                    <br></br><br></br><br></br>
-                    <h3>Album's del artista</h3>
-                    <p:selectOneMenu id="consoleeee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
-                    </p:selectOneMenu>
-                    <br></br><br></br>
-                    <h3>Canciones del album</h3>
-                    <p:selectOneMenu id="consoleee" value="#{selectOneMenuView.console}" placeholder="ARTISTAS" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
-                    </p:selectOneMenu>
-                    <br></br><br></br>
-                    <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="ir al inicio"  ></h:commandButton>
+            <h:form>
+                <div class="contdatos" id="comprar">
+                    
+                        <h2>VER ARTISTAS</h2>
+                        <br></br>
+                        <h3>Artistas registrados</h3>
+                        <br></br>
+                        <p:selectOneMenu id="artist" value="#{verArtistasController.artist.id_artist}" >
+                            <f:selectItem itemLabel="artista" itemValue=""/>
+                            <f:selectItems value="#{verArtistasController.artistList()}"/>
+                            <f:ajax event="change" execute="artist" render="album"/>
+                        </p:selectOneMenu>
+                        <br></br>
+                        <p:outputLabel value="#{verArtistasController.artist.id_artist}"/>
+                        <p:outputLabel id="aSelected" value="#{verArtistasController.artist.id_artist}"/>
+                        <br></br><br></br>
+                        <h3>Album</h3>
+                        <p:selectOneMenu id="album" value="#{verArtistasController.album.id_album}">
+                            <f:selectItem itemLabel="album" itemValue=""/>
+                            <f:selectItems value="#{verArtistasController.albumList()}"/>
+                            <f:ajax event="change" execute="album" render="song"/>
+                        </p:selectOneMenu>
+                        <br></br>
+                        <p:outputLabel value="#{verArtistasController.album.id_album}"/>
+                        <p:outputLabel id="alSelected" value="#{verArtistasController.album.id_album}"/>
+                        <br></br><br></br>
+                        <p:selectOneMenu id="song" value="#{verArtistasController.song.id_song}" >
+                            <f:selectItem itemLabel="song" itemValue=""/>
+                            <f:selectItems value="#{verArtistasController.songList()}" />
+                            <f:ajax execute="song" render="sSelected"/>
+                        </p:selectOneMenu>
+                        <br></br><br></br>
+                        <p:outputLabel value="#{verArtistasController.song.id_song}"/>
+                        <p:outputLabel id="sSelected" value="#{verArtistasController.song.id_song}"/>
+                        <br></br><br></br>
+
+                        <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="ir al inicio"  ></h:commandButton>
+                    
                 </div>
-            </div>
+            </h:form>
         </div> 
         <br></br>
     </h:body>

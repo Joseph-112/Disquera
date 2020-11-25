@@ -58,7 +58,39 @@ public class DAOAlbum {
                 Album newAlbum = new Album();
                 newAlbum.setId_album(result.getInt(1));
                 newAlbum.setName(result.getString(2));
-                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album()+ "\n Nombre: " + newAlbum.getName() );
+                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album()+ "\n Nombre album: " + newAlbum.getName() );
+                albumList.add(newAlbum);
+                /*
+                System.out.println("No existe un usuario con esa contraseña");
+                conn.close();
+                return null;
+                 */
+            }
+            result.close();
+            stm.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+            return null;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAOGenre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return albumList;
+    }
+
+    public List<Album> albumList(Integer id_artist) {
+        
+        List<Album> albumList = new ArrayList<Album>();
+
+        try {
+            conn = DBConnection.getConnection();
+            stm = conn.createStatement();
+            result = stm.executeQuery("SELECT * FROM disquera.album WHERE id_artist = "+id_artist+" ORDER BY id_album");
+            while (result.next()) {
+                Album newAlbum = new Album();
+                newAlbum.setId_album(result.getInt(1));
+                newAlbum.setName(result.getString(2));
+                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album()+ "\n Nombre album: " + newAlbum.getName() );
                 albumList.add(newAlbum);
                 /*
                 System.out.println("No existe un usuario con esa contraseña");
