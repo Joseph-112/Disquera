@@ -13,6 +13,11 @@
     </h:head>
     <h:body>
         <div>
+            <h:form>
+                <h:commandButton class="bot" actionListener="#{adminController.cerrarSesion()}" value="Cerrar Sesión" type="submit" ></h:commandButton>
+            </h:form>
+        </div>
+        <div>
             <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
         </div>
         <div class="bigcuadro">
@@ -25,16 +30,9 @@
                     </p:growl>
                     <p:menu class="menu" >
                         <p:submenu label="COMPRAR">
-                            <p:menuitem value="Comprar" action="#{userController.comprar()}" />
-                            <p:menuitem value="ver generos" action="#{userController.verGenero()}"/>
-                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" />
-                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"/>
-
-                            <p:menuitem value="ver artistas" action="#{userController.verArtista()}" />
-                            <p:menuitem value="ver generos" action="#{userController.verGenero()}"/>
-                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" />
-                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"/>
-                            
+                            <p:menuitem value="Ir al inicio" action="#{userController.inicioUser()}" />
+                            <p:menuitem value="Comprar canciónes" action="#{userController.comprarCanciones()}" />
+                            <p:menuitem value="Comprar album's" action="#{userController.comprarAlbum()}"/>
                         </p:submenu>
 
                         <p:submenu label="CARRITO">

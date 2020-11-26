@@ -14,6 +14,7 @@ import model.DAOAlbum;
 import model.DAOArtist;
 import pojo.Album;
 import pojo.Artist;
+import pojo.Genre;
 
 /**
  *
@@ -27,6 +28,7 @@ public class crearalbumController {
     private String albumname;
     private double price;
     private Album album;
+    private Genre genre;
     private Artist artist;
 
     /**
@@ -35,6 +37,7 @@ public class crearalbumController {
     public crearalbumController() {
         album = new Album();
         artist = new Artist();
+genre = new Genre();
     }
 
     public List<SelectItem> artistList() {
@@ -49,9 +52,11 @@ public class crearalbumController {
     }
 
     public void sendData() {//recpcion y muestra de datos desde el boton por consola
-
-        boolean success = new DAOAlbum().insertAlbum(album.getName(), artist.getId_artist(),album.getPrice());
-        if (success==true) {
+        
+        System.out.println("Genero"+genre.getId_genre());
+DAOAlbum albumdata = new DAOAlbum();
+       // boolean success = new DAOAlbum().insertAlbum(album.getName(), artist.getId_artist(),album.getPrice());
+        if (albumdata.insertAlbum(album.getName(), artist.getId_artist(),album.getPrice(),genre.getId_genre())==true){
             System.out.println("Registrado con éxito");
         }else{
             System.out.println("Chúpelo prro");

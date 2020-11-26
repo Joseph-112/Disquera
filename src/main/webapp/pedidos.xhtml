@@ -5,13 +5,18 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>VerArtistas | ChameleonDisc</title>
+        <title>Pedidos | ChameleonDisc</title>
 
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </h:head>
     <h:body>
+        <div>
+            <h:form>
+                <h:commandButton class="bot" actionListener="#{adminController.cerrarSesion()}" value="Cerrar Sesión" type="submit" ></h:commandButton>
+            </h:form>
+        </div>
         <div>
             <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
         </div>
@@ -24,34 +29,73 @@
                         <p:autoUpdate />
                     </p:growl>
                     <p:menu class="menu" >
-                        <p:submenu label="AGREGAR">
-                            <p:menuitem value="ver artistas" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver albúm's" action="#{menuView.save}" icon="pi pi-save" />
-                            <p:menuitem value="ver canciones" action="#{menuView.update}"  icon="pi pi-refresh" />
-                            <p:menuitem value="ver generos" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                        <p:submenu label="COMPRAR">
+                            <p:menuitem value="Ir al inicio" action="#{userController.inicioUser()}" />
+                            <p:menuitem value="Comprar canciónes" action="#{userController.comprarCanciones()}" />
+                            <p:menuitem value="Comprar album's" action="#{userController.comprarAlbum()}"/>
                         </p:submenu>
 
                         <p:submenu label="CARRITO">
-                            <p:menuitem value="MIS PEDIDOS" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
             </div>
             <div class="contdatos">
                 <div>
-                    <br></br><br></br><br></br>
-                    <h2>PEDIDOS</h2>
-                    <br></br>
-                    <h3>MIS PEDIDOS</h3>
-                    <br></br><br></br>
-                    <p:selectOneMenu id="consoleieee" value="#{selectOneMenuView.console}" placeholder="PEDIDOS" style="width:125px">
-                        <f:selectItem itemLabel="Bd?" itemValue="artista1" />
-                        <f:selectItem itemLabel="Bd?" itemValue="artista2" /><!--https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml-->
-                        <f:selectItem itemLabel="Bd?" itemValue="artista3" />
-                    </p:selectOneMenu>
-                    <br></br><br></br><br></br>
-                    <br></br><br></br>
-                    <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="COMPRAR"  ></h:commandButton>
+                    <h:form>
+                        <br></br><br></br>
+                        <h2>PEDIDOS</h2>
+                        <br></br>
+                        <h3>MIS PEDIDOS</h3>
+                        <br></br>
+                        <!--Scrol bar no se si sea funcional aun-->
+
+                        <p:scrollPanel style="width:715px;height:170px">
+                            <p:dataTable var="Pedidos" value="#{dtBasicView.cars}">
+                                
+                                <p:column style="width:10px">
+                                    <p:rowToggler />
+                                </p:column>
+                                <p:column headerText="Artista">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Compra">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Valor">
+                                    <h:outputText value="#{car.year}" />
+                                </p:column>
+
+                                <p:rowExpansion>
+                                    <p:panelGrid  columns="2" columnClasses="label,value" style="width:150px;heigth:15px" >
+                                        <f:facet name="header">
+                                            <p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/> 
+                                        </f:facet>
+
+                                        <h:outputText value="Id:" />
+                                        <h:outputText value="#{car.id}" />
+
+                                        <h:outputText value="Year" />
+                                        <h:outputText value="#{car.year}" />
+
+                                        <h:outputText value="Color:" />
+                                        <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+
+                                        <h:outputText value="Price" />
+                                        <h:outputText value="$#{car.price}" />
+                                    </p:panelGrid>
+                                </p:rowExpansion>
+                            </p:dataTable>
+                        </p:scrollPanel>
+                        <!--Scrol bar no se si sea funcional aun-->
+                        <br></br>
+                        <p:outputLabel value="Monto total"/>
+                        <br></br>
+                        <p:outputLabel value="#{comprarCancionController.song.id_song}"/>
+
+                        <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="COMPRAR"  ></h:commandButton>
+                    </h:form>
                 </div>
             </div>
         </div> 

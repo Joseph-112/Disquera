@@ -5,13 +5,18 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Comprar Cancion | ChameleonDisc</title>
+        <title>Comprar Canciónes | ChameleonDisc</title>
 
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </h:head>
     <h:body>
+        <div>
+            <h:form>
+                <h:commandButton class="bot" actionListener="#{adminController.cerrarSesion()}" value="Cerrar Sesión" type="submit" ></h:commandButton>
+            </h:form>
+        </div>
         <div>
             <img class="logo" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
         </div>
@@ -25,11 +30,11 @@
                     </p:growl>
                     <p:menu class="menu" >
                         <p:submenu label="COMPRAR">
-                            <p:menuitem value="ver artistas" action="#{userController.verArtista()}" />
-                            <p:menuitem value="ver generos" action="#{userController.verGenero()}"/>
-                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" />
-                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"  />    
+                            <p:menuitem value="Ir al inicio" action="#{userController.inicioUser()}" />
+                            <p:menuitem value="Comprar canciónes" action="#{userController.comprarCanciones()}" />
+                            <p:menuitem value="Comprar album's" action="#{userController.comprarAlbum()}"/>
                         </p:submenu>
+
                         <p:submenu label="CARRITO">
                             <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
                         </p:submenu>
@@ -38,9 +43,9 @@
             </div>
             <h:form>
                 <div class="contdatos" id="comprar">
-
-                    <h2>CANCIONES DISPONIBLES POR ARTISTAS</h2>
                     <br></br>
+                    <h2>CANCIONES DISPONIBLES POR ARTISTAS</h2>
+                    <br></br><br></br>
                     <h3>ARTISTAS</h3>
                     <br></br>
                     <p:selectOneMenu id="artist" value="#{comprarCancionController.artist.id_artist}" >
@@ -48,12 +53,12 @@
                         <f:selectItems value="#{comprarCancionController.artistList()}"/>
                         <f:ajax event="change" execute="artist" render="song"/>
                     </p:selectOneMenu>
-                    <br></br>
+                    <br></br><br></br>
                     <p:outputLabel value="#{comprarCancionController.artist.id_artist}"/>
                     <p:outputLabel id="aSelected" value="#{comprarCancionController.artist.id_artist}"/>
-                    <br></br><br></br>
+                    <br></br>
                     <h3>Canciónes</h3>
-                    <br></br><br></br>
+                    <br></br>
                     <p:selectCheckboxMenu id="song" value="#{comprarCancionController.selectedSongs}" label="Canciones" multiple="true"
                                           filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                         <p:ajax event="itemUnselect" listener="#{comprarCancionController.onItemUnselect}" />
@@ -64,7 +69,7 @@
                     <p:outputLabel id="sSelected" value="#{comprarCancionController.song.id_song}"/>
                     <br></br><br></br>
 
-                    <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="ir al inicio"  ></h:commandButton>
+                    <h:commandButton class="bot" actionListener="#{UserController.inicioUser()}" value="COMPRAR"  ></h:commandButton>
 
                 </div>
             </h:form>

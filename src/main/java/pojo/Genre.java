@@ -12,7 +12,7 @@ package pojo;
 public class Genre {
     
     //Take id_genre from the database
-    private Integer id_genre;
+    private Integer id_genre = 2;
     //Take genre description from the database
     private String genre;
 

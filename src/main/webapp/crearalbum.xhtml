@@ -58,6 +58,7 @@
                         <f:selectItems value="#{crearalbumController.artistList()}"/>
                         <f:ajax execute="artist" render="aSelected"/>
                     </p:selectOneMenu>
+                    
                     <br></br>
                     <p:outputLabel value="#{crearalbumController.artist.name}"/>
                     <p:outputLabel id="gSelected" value="#{crearalbumController.artist.id_artist}"/>

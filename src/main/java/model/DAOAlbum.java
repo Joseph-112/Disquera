@@ -25,21 +25,20 @@ public class DAOAlbum {
     Statement stm;
     ResultSet result;
 
-    public boolean insertAlbum(String name, int id_artist, double price) {
+    public boolean insertAlbum(String name, int id_artist, double price, int id_genre) {
         //Timestamp date = new Timestamp(birthday.get)
         boolean success = false;
         try {
             conn = DBConnection.getConnection();
             stm = conn.createStatement();
-            stm.execute("INSERT INTO disquera.album (name, id_artist, price) VALUES ( '"+name+"', "+id_artist+", "+price+");");
+            stm.executeUpdate("INSERT INTO disquera.album (name, id_artist, price, id_genre) VALUES ( '"+name+"', '"+id_artist+"', '"+price+"','"+id_genre+"');");
             success = true;
-            //result.close();
-            stm.close();
-            conn.close();
 
         } catch (SQLException ex) {
             ex.getStackTrace();
+System.err.println("SQL error"+ex);
         } catch (ClassNotFoundException ex) {
+System.err.println("Otro error"+ex);
             Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         return success;

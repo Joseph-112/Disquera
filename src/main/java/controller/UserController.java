@@ -24,24 +24,17 @@ public class UserController {
      */
     public UserController() {
     }
-    public void comprar() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/verartistas.xhtml");
-    }
-    /*public void verArtista() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/verartistas.xhtml");
-    }*/
-    public void verAlbum() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/veralbum.xhtml");//no se que se hizo el xhtml de este
-    }
-    public void verCancion() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/comprarcancion.xhtml");//no se que se hizo el xhtml de este
-    }
-
-    public void verGenero() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/vergenero.xhtml");
+    public void comprarCanciones() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/comprarcancion.xhtml");
     }
     public void pedidos() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");// este no lo cree porque no sabia que ponerle
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/pedidos.xhtml");
+    }
+    public void comprarAlbum() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/veralbum.xhtml");//no se que se hizo el xhtml de este
+    }
+    public void inicioUser() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");//no se que se hizo el xhtml de este
     }
     
 }
