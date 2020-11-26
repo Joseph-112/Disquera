@@ -12,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.model.SelectItem;
 import model.DAOAlbum;
 import model.DAOArtist;
+import model.DAOGenre;
 import pojo.Album;
 import pojo.Artist;
 import pojo.Genre;
@@ -25,8 +26,8 @@ import pojo.Genre;
 public class crearalbumController {
 
     private static List<SelectItem> artistList;
-    private String albumname;
-    private double price;
+    private static List<SelectItem> genreList;
+    
     private Album album;
     private Genre genre;
     private Artist artist;
@@ -37,7 +38,7 @@ public class crearalbumController {
     public crearalbumController() {
         album = new Album();
         artist = new Artist();
-genre = new Genre();
+        genre = new Genre();
     }
 
     public List<SelectItem> artistList() {
@@ -51,53 +52,34 @@ genre = new Genre();
         return artistList;
     }
 
+    public List<SelectItem> genreList() {
+        genreList = new ArrayList<SelectItem>();
+        List<Genre> genres;
+        genres = new DAOGenre().genreList();
+        for (Genre genre : genres) {
+            SelectItem countryItem = new SelectItem(genre.getId_genre(), genre.getGenre());
+            genreList.add(countryItem);
+        }
+        return genreList;
+    }
+
     public void sendData() {//recpcion y muestra de datos desde el boton por consola
-        
-        System.out.println("Genero"+genre.getId_genre());
-DAOAlbum albumdata = new DAOAlbum();
-       // boolean success = new DAOAlbum().insertAlbum(album.getName(), artist.getId_artist(),album.getPrice());
-        if (albumdata.insertAlbum(album.getName(), artist.getId_artist(),album.getPrice(),genre.getId_genre())==true){
+
+        System.out.println("Genero" + genre.getId_genre());
+        DAOAlbum albumdata = new DAOAlbum();
+        boolean success = new DAOAlbum().insertAlbum(album.getName(),artist.getId_artist(),album.getPrice(), genre.getId_genre());
+        if (success==true) {
             System.out.println("Registrado con éxito");
         }else{
             System.out.println("Chúpelo prro");
         }
+        // boolean success = new DAOAlbum().insertAlbum(album.getName(), artist.getId_artist(),album.getPrice());
+        /*if (albumdata.insertAlbum(album.getName(), artist.getId_artist(), album.getPrice(), genre.getId_genre()) == true) {
+            System.out.println("Registrado con éxito");
+        } else {
+            System.out.println("Error");
+        }*/
         System.out.println("Entro " + album.getName() + " " + artist.getId_artist() + " " + album.getPrice());
-    }
-
-    /**
-     * Obtains album's name from database
-     *
-     * @return
-     */
-    public String getAlbumname() {
-        return albumname;
-    }
-
-    /**
-     * Set album name
-     *
-     * @param albumname
-     */
-    public void setAlbumname(String albumname) {
-        this.albumname = albumname;
-    }
-
-    /**
-     * Obtains album's price
-     *
-     * @return
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Set album's price
-     *
-     * @param price
-     */
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     /**
@@ -136,4 +118,31 @@ DAOAlbum albumdata = new DAOAlbum();
         this.artist = artist;
     }
 
+    public static List<SelectItem> getArtistList() {
+        return artistList;
+    }
+
+    public static void setArtistList(List<SelectItem> artistList) {
+        crearalbumController.artistList = artistList;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public static List<SelectItem> getGenreList() {
+        return genreList;
+    }
+
+    public static void setGenreList(List<SelectItem> genreList) {
+        crearalbumController.genreList = genreList;
+    }
+
+
+
+    
 }

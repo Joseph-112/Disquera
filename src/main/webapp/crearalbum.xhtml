@@ -58,13 +58,17 @@
                         <f:selectItems value="#{crearalbumController.artistList()}"/>
                         <f:ajax execute="artist" render="aSelected"/>
                     </p:selectOneMenu>
-                    
                     <br></br>
-                    <p:outputLabel value="#{crearalbumController.artist.name}"/>
-                    <p:outputLabel id="gSelected" value="#{crearalbumController.artist.id_artist}"/>
+                    <p:selectOneMenu id="genre" value="#{crearalbumController.genre.id_genre}">
+                        <f:selectItem itemLabel="--Seleccione--" itemValue=""/>
+                        <f:selectItems value="#{crearalbumController.genreList()}"/>
+                        <f:ajax execute="genre" render="aSelected"/>
+                    </p:selectOneMenu>
+                    <br></br>
+                    
                     <br></br><br></br>
                     <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Album" value="#{crearalbumController.album.name}" required="true"/>
-                    <p:inputText type="text" id="valoralbum" class="campotexto" placeholder="Valor en pesos colombianos" value="#{crearalbumController.album.price}" required="true"/> 
+                    <p:inputText type="number" id="valoralbum" class="campotexto" placeholder="Valor en pesos colombianos" value="#{crearalbumController.album.price}" required="true"/> 
     
                     <br></br>
                     

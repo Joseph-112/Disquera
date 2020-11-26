@@ -53,23 +53,21 @@
                         <f:selectItems value="#{comprarCancionController.artistList()}"/>
                         <f:ajax event="change" execute="artist" render="song"/>
                     </p:selectOneMenu>
-                    <br></br><br></br>
-                    <p:outputLabel value="#{comprarCancionController.artist.id_artist}"/>
-                    <p:outputLabel id="aSelected" value="#{comprarCancionController.artist.id_artist}"/>
+                    
                     <br></br>
                     <h3>Canciónes</h3>
                     <br></br>
-                    <p:selectCheckboxMenu id="song" value="#{comprarCancionController.selectedSongs}" label="Canciones" multiple="true"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                        <p:ajax event="itemUnselect" listener="#{comprarCancionController.onItemUnselect}" />
-                        <f:selectItems value="#{comprarCancionController.songList()}" />
-                    </p:selectCheckboxMenu>
+                    <p:selectOneMenu id="song" value="#{comprarCancionController.song.id_song}" >
+                        <f:selectItem itemLabel="artista" itemValue=""/>
+                        <f:selectItems value="#{comprarCancionController.songList()}"/>
+                        <f:ajax event="change" execute="song" render="sSelected"/>
+                    </p:selectOneMenu>
                     <br></br><br></br>
                     <p:outputLabel value="#{comprarCancionController.song.id_song}"/>
                     <p:outputLabel id="sSelected" value="#{comprarCancionController.song.id_song}"/>
                     <br></br><br></br>
 
-                    <h:commandButton class="bot" actionListener="#{UserController.inicioUser()}" value="COMPRAR"  ></h:commandButton>
+                    <h:commandButton class="bot" actionListener="#{comprarCancionController.sendData()}" value="COMPRAR"  ></h:commandButton>
 
                 </div>
             </h:form>

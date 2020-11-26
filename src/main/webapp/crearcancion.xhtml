@@ -58,7 +58,7 @@
                     <p:selectOneMenu id="artist" value="#{crearcancion.artist.id_artist}">
                         <f:selectItem itemLabel="--Artista--" itemValue=""/>
                         <f:selectItems value="#{crearcancion.artistList()}"/>
-                        <f:ajax execute="artist" render="aSelected"/>
+                        <f:ajax execute="artist" render="album"/>
                     </p:selectOneMenu>
                     <br></br>
                     <h3>Seleccione el album de la canción</h3>
@@ -66,7 +66,7 @@
                     <p:selectOneMenu id="album" value="#{crearcancion.album.id_album}">
                         <f:selectItem itemLabel="--Album--" itemValue=""/>
                         <f:selectItems value="#{crearcancion.albumList()}"/>
-                        <f:ajax execute="album" render="alSelected"/>
+                        <f:ajax execute="album" render="genre"/>
                     </p:selectOneMenu>
                     <br></br>
                     <h3>Seleccione el género de la canción</h3>

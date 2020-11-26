@@ -70,9 +70,16 @@ public class crearcancionController {
     public List<SelectItem> albumList() {
         albumList = new ArrayList<SelectItem>();
         List<Album> albums;
-        albums = new DAOAlbum().albumList();
+        if (artist.getId_artist() == null) {
+            albums = new DAOAlbum().albumList();
+        } else {
+            albums = new DAOAlbum().albumList(artist.getId_artist());
+        }
+
+        //albums = new DAOAlbum().albumList();
         for (Album album : albums) {
             SelectItem albumItem = new SelectItem(album.getId_album(), album.getName());
+            
             albumList.add(albumItem);
         }
         return albumList;

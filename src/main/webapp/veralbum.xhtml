@@ -48,28 +48,22 @@
                     <br></br><br></br>
                     <h3>ARTISTAS</h3>
                     <br></br>
-                    <p:selectOneMenu id="artist" value="#{comprarCancionController.artist.id_artist}" >
+                    <p:selectOneMenu id="artist" value="#{comprarAlbum.artist.id_artist}" >
                         <f:selectItem itemLabel="ARTISTAS" itemValue=""/>
-                        <f:selectItems value="#{comprarCancionController.artistList()}"/>
+                        <f:selectItems value="#{comprarAlbum.artistList()}"/>
                         <f:ajax event="change" execute="artist" render="album"/>
                     </p:selectOneMenu>
-                    <br></br>
-                    <p:outputLabel value="#{comprarCancionController.artist.id_artist}"/>
-                    <p:outputLabel id="aSelected" value="#{comprarCancionController.artist.id_artist}"/>
                     <br></br><br></br>
                     <h3>ALBUM'S</h3>
                     <br></br>
-                    <p:selectCheckboxMenu id="song" value="#{comprarCancionController.selectedSongs}" label="ALBUMS" multiple="true"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                        <p:ajax event="itemUnselect" listener="#{comprarCancionController.onItemUnselect}" />
-                        <f:selectItems value="#{comprarCancionController.songList()}" />
-                    </p:selectCheckboxMenu>
-                    <br></br><br></br>
-                    <p:outputLabel value="#{comprarCancionController.song.id_song}"/>
-                    <p:outputLabel id="sSelected" value="#{comprarCancionController.song.id_song}"/>
+                    <p:selectOneMenu id="album" value="#{comprarAlbum.album.id_album}">
+                        <f:selectItem itemLabel="ALBUM" itemValue=""/>
+                        <f:selectItems value="#{comprarAlbum.albumList()}"/>
+                        <f:ajax execute="album" render="album"/>
+                    </p:selectOneMenu>
                     <br></br><br></br>
 
-                    <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="COMPRAR"  ></h:commandButton>
+                    <h:commandButton class="bot" actionListener="#{comprarAlbum.sendData()}" value="COMPRAR"  ></h:commandButton>
 
                 </div>
             </h:form>

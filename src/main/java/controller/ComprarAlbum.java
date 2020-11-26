@@ -12,32 +12,34 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import model.DAOAlbum;
 import model.DAOArtist;
+import model.DAOGenre;
 import model.DAOSale;
-import model.DAOSong;
 import org.primefaces.event.UnselectEvent;
+import pojo.Album;
 import pojo.Artist;
-import pojo.Song;
+import pojo.Genre;
 
 /**
  *
  * @author Joseph
  */
-@Named(value = "comprarCancionController")
+@Named(value = "comprarAlbum")
 @RequestScoped
-public class ComprarCancionController {
+public class ComprarAlbum {
 
     private static List<SelectItem> artistList;
-    private static List<SelectItem> songList;
+    private static List<SelectItem> albumList;
+    private Album album;
     private Artist artist;
-    private Song song;
 
     /**
-     * Creates a new instance of ComprarCancionController
+     * Creates a new instance of ComprarAlbum
      */
-    public ComprarCancionController() {
+    public ComprarAlbum() {
+        album = new Album();
         artist = new Artist();
-        song = new Song();
     }
 
     public List<SelectItem> artistList() {
@@ -50,34 +52,24 @@ public class ComprarCancionController {
         }
         return artistList;
     }
+    
+    public List<SelectItem> albumList() {
 
-    public List<SelectItem> songList() {
-
-        songList = new ArrayList<SelectItem>();
-        List<Song> songs;
-
+        albumList = new ArrayList<SelectItem>();
+        List<Album> albums;
         if (artist.getId_artist() == null) {
-            songs = new DAOSong().songList();
+            albums = new DAOAlbum().albumList();
         } else {
-            songs = new DAOSong().songListArtist(artist.getId_artist());
+            albums = new DAOAlbum().albumList(artist.getId_artist());
         }
 
         //albums = new DAOAlbum().albumList();
-        for (Song cancion : songs) {
-            SelectItem songItem = new SelectItem(cancion.getId_song(), cancion.getName());
-            songList.add(songItem);
+        for (Album album : albums) {
+            SelectItem albumItem = new SelectItem(album.getId_album(), album.getName());
+            
+            albumList.add(albumItem);
         }
-        return songList;
-    }
-    
-    public void sendData() {//recpcion y muestra de datos desde el boton por consola
-
-        boolean success = new DAOSale().insertSaleSong(artist.getId_artist(), song.getId_song());
-        if (success==true) {
-            System.out.println("Registrado con éxito");
-        }else{
-            System.out.println("Error");
-        }
+        return albumList;
     }
     
     public void onItemUnselect(UnselectEvent event) {
@@ -90,20 +82,30 @@ public class ComprarCancionController {
         context.addMessage(null, msg);
     }
 
+    public void sendData() {//recpcion y muestra de datos desde el boton por consola
+
+        boolean success = new DAOSale().insertSale(artist.getId_artist(), album.getId_album());
+        if (success==true) {
+            System.out.println("Registrado con éxito");
+        }else{
+            System.out.println("Chúpelo prro");
+        }
+    }
+
     public static List<SelectItem> getArtistList() {
         return artistList;
     }
 
     public static void setArtistList(List<SelectItem> artistList) {
-        ComprarCancionController.artistList = artistList;
+        ComprarAlbum.artistList = artistList;
     }
 
-    public static List<SelectItem> getSongList() {
-        return songList;
+    public Album getAlbum() {
+        return album;
     }
 
-    public static void setSongList(List<SelectItem> songList) {
-        ComprarCancionController.songList = songList;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public Artist getArtist() {
@@ -114,12 +116,12 @@ public class ComprarCancionController {
         this.artist = artist;
     }
 
-    public Song getSong() {
-        return song;
+    public static List<SelectItem> getAlbumList() {
+        return albumList;
     }
 
-    public void setSong(Song song) {
-        this.song = song;
+    public static void setAlbumList(List<SelectItem> albumList) {
+        ComprarAlbum.albumList = albumList;
     }
 
 }

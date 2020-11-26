@@ -31,14 +31,14 @@ public class DAOAlbum {
         try {
             conn = DBConnection.getConnection();
             stm = conn.createStatement();
-            stm.executeUpdate("INSERT INTO disquera.album (name, id_artist, price, id_genre) VALUES ( '"+name+"', '"+id_artist+"', '"+price+"','"+id_genre+"');");
+            stm.executeUpdate("INSERT INTO disquera.album (name, id_artist, price, id_genre) VALUES ( '" + name + "', '" + id_artist + "', '" + price + "','" + id_genre + "');");
             success = true;
 
         } catch (SQLException ex) {
             ex.getStackTrace();
-System.err.println("SQL error"+ex);
+            System.err.println("SQL error" + ex);
         } catch (ClassNotFoundException ex) {
-System.err.println("Otro error"+ex);
+            System.err.println("Otro error" + ex);
             Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         return success;
@@ -57,7 +57,7 @@ System.err.println("Otro error"+ex);
                 Album newAlbum = new Album();
                 newAlbum.setId_album(result.getInt(1));
                 newAlbum.setName(result.getString(2));
-                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album()+ "\n Nombre album: " + newAlbum.getName() );
+                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album() + "\n Nombre album: " + newAlbum.getName());
                 albumList.add(newAlbum);
                 /*
                 System.out.println("No existe un usuario con esa contraseña");
@@ -78,18 +78,18 @@ System.err.println("Otro error"+ex);
     }
 
     public List<Album> albumList(Integer id_artist) {
-        
+
         List<Album> albumList = new ArrayList<Album>();
 
         try {
             conn = DBConnection.getConnection();
             stm = conn.createStatement();
-            result = stm.executeQuery("SELECT * FROM disquera.album WHERE id_artist = "+id_artist+" ORDER BY id_album");
+            result = stm.executeQuery("SELECT * FROM disquera.album WHERE id_artist = " + id_artist + " ORDER BY id_album");
             while (result.next()) {
                 Album newAlbum = new Album();
                 newAlbum.setId_album(result.getInt(1));
                 newAlbum.setName(result.getString(2));
-                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album()+ "\n Nombre album: " + newAlbum.getName() );
+                System.out.println("\n\n Received data: \n Id: " + newAlbum.getId_album() + "\n Nombre album: " + newAlbum.getName());
                 albumList.add(newAlbum);
                 /*
                 System.out.println("No existe un usuario con esa contraseña");

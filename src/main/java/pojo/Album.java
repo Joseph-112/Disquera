@@ -14,6 +14,7 @@ public class Album {
     private Integer id_album;
     private String name;
     private Integer id_artist;
+    private Integer id_genre;
     private double price;
 
     /**
@@ -78,6 +79,14 @@ public class Album {
      */
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Integer getId_genre() {
+        return id_genre;
+    }
+
+    public void setId_genre(Integer id_genre) {
+        this.id_genre = id_genre;
     }
     
     
