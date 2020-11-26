@@ -27,14 +27,10 @@ public class UserController {
     public void comprarCanciones() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/comprarcancion.xhtml");
     }
-    public void pedidos() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/pedidos.xhtml");
-    }
     public void comprarAlbum() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/veralbum.xhtml");//no se que se hizo el xhtml de este
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/veralbum.xhtml");
     }
     public void inicioUser() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");//no se que se hizo el xhtml de este
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/User.xhtml");
     }
-    
 }

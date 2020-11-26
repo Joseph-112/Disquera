@@ -5,8 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Admin | ChameleonDisc</title>
-        <link href="css/estiloslogin.css" rel="stylesheet" type="text/css"/>
+        <title>Estadisticas Canción | ChameleonDisc</title>
+
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -23,7 +23,7 @@
         <div class="bigcuadro">
             <div class="contmenu">
                 <br></br>
-                <h3 class="tit">ADMINISTRADOR</h3>
+                <h3 class="tit">USUARIO</h3> <!--no se si llamar aca de la base de datos el nombre-->
                 <h:form>
                     <p:growl>
                         <p:autoUpdate />
@@ -47,7 +47,46 @@
             </div>
             <div class="contdatos">
                 <div>
-                    <img class="imaguser" src="imag/logo.png" heigth="80" alt="Go to index"></img>;
+                    <h:form>
+                        <br></br><br></br>
+                        <h2>ESTADISTICAS DE VENTAS POR</h2>
+                        <br></br>
+                        <h3>CANCION</h3>
+                        <br></br>
+                        <!--Scrol bar no se si sea funcional aun-->
+
+                        <!--<p:scrollPanel style="width:715px;height:170px">-->
+                        <p:dataTable var="p" value="#{pedidoController.orderList}" rows="5" paginator="true">
+
+                            <p:column style="width:10px">
+                                <p:rowToggler />
+                            </p:column>
+                            <p:column headerText="Id pedido">
+                                <h:outputText value="#{p.id_sale}" />
+                            </p:column>
+                            <p:column headerText="Artista">
+                                <h:outputText value="#{p.artistName}" />
+                            </p:column>
+                            <p:column headerText="Canción">
+                                <h:outputText value="#{p.songName}" />
+                            </p:column>
+                            <p:column headerText="Album">
+                                <h:outputText value="#{p.albumName}" />
+                            </p:column>
+                            <p:column headerText="Precio">
+                                <h:outputText value="#{p.price}" />
+                            </p:column>
+                            
+                        </p:dataTable>
+                        <!--</p:scrollPanel>-->
+                        <!--Scrol bar no se si sea funcional aun-->
+                        <br></br>
+                        <p:outputLabel value="Monto total"/>
+                        <br></br>
+                        <p:outputLabel value="#{comprarCancionController.song.id_song}"/>
+
+                        <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="COMPRAR"  ></h:commandButton>
+                    </h:form>
                 </div>
             </div>
         </div> 

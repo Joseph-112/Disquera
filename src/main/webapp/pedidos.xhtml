@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Pedidos | ChameleonDisc</title>
+        <title>Estadisticas Album | ChameleonDisc</title>
 
         <link href="css/estilosgeneral.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -29,14 +29,18 @@
                         <p:autoUpdate />
                     </p:growl>
                     <p:menu class="menu" >
-                        <p:submenu label="COMPRAR">
-                            <p:menuitem value="Ir al inicio" action="#{userController.inicioUser()}" />
-                            <p:menuitem value="Comprar canciónes" action="#{userController.comprarCanciones()}" />
-                            <p:menuitem value="Comprar album's" action="#{userController.comprarAlbum()}"/>
+                        <p:submenu label="AGREGAR">
+                            <p:menuitem value="Crear artista" action="#{adminController.crearArtista()}"/>
+                            <p:menuitem value="Crear albúm" action="#{adminController.crearAlbum()}"/>
+                            <p:menuitem value="Crear cancion" action="#{adminController.crearCancion()}" />
+                            <p:menuitem value="Crear genero" action="#{adminController.crearGenero()}"/>
                         </p:submenu>
 
-                        <p:submenu label="CARRITO">
-                            <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
+                        <p:submenu label="ESTADISTICAS">
+                            <p:menuitem value="Estadistica Album" action="#{adminController.pedidos()}"/>
+                            <p:menuitem value="Estadistica Cancion" action="#{adminController.estadisticasCancion()}"/>
+                            <p:menuitem value="Estadistica Artista" action="#{adminController.estadisticasArtistas()}"/>
+                            <p:menuitem value="Estadistica Genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
@@ -45,9 +49,9 @@
                 <div>
                     <h:form>
                         <br></br><br></br>
-                        <h2>PEDIDOS</h2>
+                        <h2>ESTADISTICAS DE VENTAS POR</h2>
                         <br></br>
-                        <h3>MIS PEDIDOS</h3>
+                        <h3>ALBUM</h3>
                         <br></br>
                         <!--Scrol bar no se si sea funcional aun-->
 

@@ -25,13 +25,9 @@
                     </p:growl>
                     <p:menu class="menu" >
                         <p:submenu label="COMPRAR">
-                            <p:menuitem value="ver artistas" action="#{userController.verArtista()}" />
-                            <p:menuitem value="ver generos" action="#{userController.verGenero()}"/>
-                            <p:menuitem value="ver albúm's" action="#{userController.verAlbum()}" />
-                            <p:menuitem value="ver canciones" action="#{userController.verCancion()}"  />    
-                        </p:submenu>
-                        <p:submenu label="CARRITO">
-                            <p:menuitem value="MIS PEDIDOS" action="#{userController.pedidos()}"  ajax="false" icon="pi pi-times"/>
+                            <p:menuitem value="Ir al inicio" action="#{userController.inicioUser()}" />
+                            <p:menuitem value="Comprar canciónes" action="#{userController.comprarCanciones()}" />
+                            <p:menuitem value="Comprar album's" action="#{userController.comprarAlbum()}"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
