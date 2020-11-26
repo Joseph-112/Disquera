@@ -11,7 +11,8 @@ package pojo;
  */
 public class Sale {
     
-    private int id_sale,id_song,id_user,id_album;
+    private int id_sale,id_song,id_user,id_album,id_genre;
+    private String songName, albumName,artistName;
     private double price;
     
 
@@ -53,6 +54,38 @@ public class Sale {
 
     public void setId_album(int id_album) {
         this.id_album = id_album;
+    }
+
+    public String getSongName() {
+        return songName;
+    }
+
+    public void setSongName(String songName) {
+        this.songName = songName;
+    }
+
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
+    }
+
+    public int getId_genre() {
+        return id_genre;
+    }
+
+    public void setId_genre(int id_genre) {
+        this.id_genre = id_genre;
     }
     
     

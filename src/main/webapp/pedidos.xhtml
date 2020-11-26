@@ -60,32 +60,19 @@
                             <p:column headerText="Id pedido">
                                 <h:outputText value="#{p.id_sale}" />
                             </p:column>
-                            <p:column headerText="Id">
-                                <h:outputText value="#{p.id}" />
+                            <p:column headerText="Artista">
+                                <h:outputText value="#{p.artistName}" />
                             </p:column>
-                            <p:column headerText="Confirmar compra">
-                                <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="COMPRAR" />
+                            <p:column headerText="Canción">
+                                <h:outputText value="#{p.songName}" />
                             </p:column>
-
-                            <p:rowExpansion>
-                                <p:panelGrid  columns="2" columnClasses="label,value" style="width:150px;heigth:15px" >
-                                    <f:facet name="header">
-                                        <p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/> 
-                                    </f:facet>
-
-                                    <h:outputText value="Id:" />
-                                    <h:outputText value="#{car.id}" />
-
-                                    <h:outputText value="Year" />
-                                    <h:outputText value="#{car.year}" />
-
-                                    <h:outputText value="Color:" />
-                                    <h:outputText value="#{car.color}" style="color:#{car.color}"/>
-
-                                    <h:outputText value="Price" />
-                                    <h:outputText value="$#{car.price}" />
-                                </p:panelGrid>
-                            </p:rowExpansion>
+                            <p:column headerText="Album">
+                                <h:outputText value="#{p.albumName}" />
+                            </p:column>
+                            <p:column headerText="Precio">
+                                <h:outputText value="#{p.price}" />
+                            </p:column>
+                            
                         </p:dataTable>
                         <!--</p:scrollPanel>-->
                         <!--Scrol bar no se si sea funcional aun-->

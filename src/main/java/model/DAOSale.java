@@ -67,7 +67,7 @@ public class DAOSale {
             try {
                 conn = DBConnection.getConnection();
                 stm = conn.createStatement();
-                stm.execute("INSERT INTO disquera.sale (id_album, id_artist, price)" + "	VALUES ( " + album.getId_album() + ", " + album.getId_artist() + ", " + album.getPrice() + "  );");
+                stm.execute("INSERT INTO disquera.sale (id_album, id_artist, price,id_genre)" + "	VALUES ( " + album.getId_album() + ", " + album.getId_artist() + ", " + album.getPrice() + " , "+album.getId_genre()+" );");
                 success = true;
                 //result.close();
                 stm.close();
@@ -92,7 +92,7 @@ public class DAOSale {
             try {
                 conn = DBConnection.getConnection();
                 stm = conn.createStatement();
-                stm.execute("INSERT INTO disquera.sale (id_song, id_artist,price)" + "	VALUES ( " + song.getId_song()+ ", " + song.getId_artist() + " ," + song.getPrice() + "  );");
+                stm.execute("INSERT INTO disquera.sale (id_song, price,id_artist,id_genre)" + "	VALUES ( " + song.getId_song()+ ", " + song.getPrice()+ " ," + song.getId_artist() + ", "+song.getId_genre()+" );");
                 success = true;
                 //result.close();
                 stm.close();
@@ -138,14 +138,17 @@ public class DAOSale {
     }
 
     public List<Sale> saleList() {
-
+        ResultSet result_album;
+        ResultSet result_artist;
         //Saves genre's data
         List<Sale> saleList = new ArrayList<Sale>();
 
         try {
             conn = DBConnection.getConnection();
             stm = conn.createStatement();
-            result = stm.executeQuery("SELECT * FROM disquera.sale ORDER BY id_sale");
+            result = stm.executeQuery("SELECT * FROM disquera.sale join disquera.song on sale.id_song=song.id_song");
+            //result_album = stm.executeQuery("SELECT * FROM disquera.sale join disquera.album on sale.id_album=album.id_album");
+            //result_artist=stm.executeQuery("SELECT * FROM disquera.sale join disquera.artist on sale.id_artist=artist.id_artist");
             while (result.next()) {
                 Sale newSale = new Sale();
                 newSale.setId_sale(result.getInt(1));
@@ -153,6 +156,10 @@ public class DAOSale {
                 newSale.setPrice(result.getDouble(3));
                 newSale.setId_album(result.getInt(4));
                 newSale.setId_user(result.getInt(5));
+                newSale.setId_genre(result.getInt(6));
+                newSale.setSongName(result.getString(10));
+                //newSale.setAlbumName(result_album.getString(8));
+                //newSale.setArtistName(result_artist.getString(8));
                 
                 System.out.println("\n\n Received data: \n Id: " + newSale.getId_sale() + "\nPrecio: " + newSale.getPrice());
                 saleList.add(newSale);
