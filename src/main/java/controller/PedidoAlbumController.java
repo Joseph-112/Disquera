@@ -16,22 +16,22 @@ import pojo.Sale;
  *
  * @author Joseph
  */
-@Named(value = "pedidoController")
+@Named(value = "pedidoAlbumController")
 @RequestScoped
-public class PedidoController {
+public class PedidoAlbumController {
 
     private List<Sale> orderList;
     private Sale order;
-    
+
     /**
-     * Creates a new instance of PedidoController
+     * Creates a new instance of PedidoAlbumController
      */
-    public PedidoController() {
+    public PedidoAlbumController() {
     }
-    
+
     @PostConstruct
     public void init() {
-        orderList = new DAOSale().saleListSong();
+        orderList = new DAOSale().saleListAlbum();
     }
 
     public List<Sale> getOrderList() {
@@ -49,5 +49,4 @@ public class PedidoController {
     public void setOrder(Sale order) {
         this.order = order;
     }
-    
 }

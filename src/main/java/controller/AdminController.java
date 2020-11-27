@@ -47,7 +47,7 @@ public class AdminController implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/pedidos.xhtml");
     }
     public void estadisticasCancion() throws IOException{
-        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/estadisticascancion.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/estadisticasAlbum.xhtml");
     }
     public void estadisticasArtistas() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/estadisticasartistas.xhtml");
