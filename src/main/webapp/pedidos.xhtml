@@ -37,8 +37,8 @@
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
-                            <p:menuitem value="Estadistica Album" action="#{adminController.pedidos()}"/>
-                            <p:menuitem value="Estadistica Cancion" action="#{adminController.estadisticasCancion()}"/>
+                            <p:menuitem value="Estadistica Cancion" action="#{adminController.pedidos()}"/>
+                            <p:menuitem value="Estadistica Album" action="#{adminController.estadisticasCancion()}"/>
                             <p:menuitem value="Estadistica Artista" action="#{adminController.estadisticasArtistas()}"/>
                             <p:menuitem value="Estadistica Genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
@@ -55,38 +55,38 @@
                         <br></br>
                         <!--Scrol bar no se si sea funcional aun-->
 
-                        <!--<p:scrollPanel style="width:715px;height:170px">-->
-                        <p:dataTable var="p" value="#{pedidoController.orderList}" rows="5" paginator="true">
+                        <p:scrollPanel style="width:715px;height:40%">
+                            <p:dataTable var="p" value="#{pedidoController.orderList}" rows="5" paginator="true">
 
-                            <p:column style="width:10px">
-                                <p:rowToggler />
-                            </p:column>
-                            <p:column headerText="Id pedido">
-                                <h:outputText value="#{p.id_sale}" />
-                            </p:column>
-                            <p:column headerText="Artista">
-                                <h:outputText value="#{p.artistName}" />
-                            </p:column>
-                            <p:column headerText="Canción">
-                                <h:outputText value="#{p.songName}" />
-                            </p:column>
-                            <p:column headerText="Album">
-                                <h:outputText value="#{p.albumName}" />
-                            </p:column>
-                            <p:column headerText="Precio">
-                                <h:outputText value="#{p.price}" />
-                            </p:column>
-                            
-                        </p:dataTable>
-                        <!--</p:scrollPanel>-->
+                                <p:column style="width:10px">
+                                    <p:rowToggler />
+                                </p:column>
+                                <p:column headerText="Id pedido" sortBy="#{p.id_sale}">
+                                    <h:outputText value="#{p.id_sale}" />
+                                </p:column>
+                                <p:column headerText="Artista" sortBy="#{p.artistName}">
+                                    <h:outputText value="#{p.artistName}" />
+                                </p:column>
+                                <p:column headerText="Canción" sortBy="#{p.songName}">
+                                    <h:outputText value="#{p.songName}" />
+                                </p:column>
+                                <p:column headerText="Album" sortBy="#{p.albumName}">
+                                    <h:outputText value="#{p.albumName}" />
+                                </p:column>
+                                <p:column headerText="Precio" sortBy="#{p.price}">
+                                    <h:outputText value="#{p.price}" />
+                                </p:column>
+
+
+                            </p:dataTable>
+                            <br></br>
+                            <p:chart type="bar" model="#{pedidoController.barModel}" style="height:300px"/>
+                        </p:scrollPanel>
                         <!--Scrol bar no se si sea funcional aun-->
                         <br></br>
                         <p:outputLabel value="Monto total"/>
                         <br></br>
-                        <p:outputLabel value="#{comprarCancionController.song.id_song}"/>
-
-                        <h:commandButton class="bot" actionListener="#{loginController.Login()}" value="COMPRAR"  ></h:commandButton>
-                    </h:form>
+                        </h:form>
                 </div>
             </div>
         </div> 

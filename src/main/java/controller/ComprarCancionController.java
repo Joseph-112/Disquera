@@ -12,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import static jdk.internal.joptsimple.internal.Messages.message;
 import model.DAOArtist;
 import model.DAOSale;
 import model.DAOSong;
@@ -69,24 +70,27 @@ public class ComprarCancionController {
         }
         return songList;
     }
-    
+
     public void sendData() {//recpcion y muestra de datos desde el boton por consola
 
         boolean success = new DAOSale().insertSaleSong(artist.getId_artist(), song.getId_song());
-        if (success==true) {
+        if (success == true) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Compra exitosa"));
             System.out.println("Registrado con éxito");
-        }else{
+        } else {
+
             System.out.println("Error");
         }
     }
-    
+
     public void onItemUnselect(UnselectEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
-         
+
         FacesMessage msg = new FacesMessage();
         msg.setSummary("Item unselected: " + event.getObject().toString());
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
-         
+
         context.addMessage(null, msg);
     }
 

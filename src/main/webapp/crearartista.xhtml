@@ -38,8 +38,8 @@
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
-                            <p:menuitem value="Estadistica Album" action="#{adminController.pedidos()}"/>
-                            <p:menuitem value="Estadistica Cancion" action="#{adminController.estadisticasCancion()}"/>
+                            <p:menuitem value="Estadistica Cancion" action="#{adminController.pedidos()}"/>
+                            <p:menuitem value="Estadistica Album" action="#{adminController.estadisticasCancion()}"/>
                             <p:menuitem value="Estadistica Artista" action="#{adminController.estadisticasArtistas()}"/>
                             <p:menuitem value="Estadistica Genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
@@ -71,11 +71,11 @@
                     <p:outputLabel id="gSelected" value="#{crearartistaController.musicGenre.id_genre}"/>
                     <br></br>    
                     <p:outputLabel for="birthday" value="" /> <!--https://www.primefaces.org/showcase/ui/input/datepicker/datePicker.xhtml-->
-                    <p:datePicker id="birthday" class="campotexto" value="#{crearartistaController.fechanacimiento}" placeholder="Fecha nacimiento" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
+                    <p:datePicker id="birthday" required="true" class="campotexto" value="#{crearartistaController.fechanacimiento}" placeholder="Fecha nacimiento" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
 
                     <h3>Foto del artista</h3>
                     <br></br>
-                    <p:fileUpload id="fotoartista" listener="#{crearartistaController.handleFileUpload}" class="campotexto" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                    <p:fileUpload id="fotoartista" required="true" listener="#{crearartistaController.handleFileUpload}" class="campotexto" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     <p:growl id="messages" showDetail="true" /> 
                     <br></br>
                     <br></br>

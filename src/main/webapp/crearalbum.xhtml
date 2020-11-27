@@ -38,8 +38,8 @@
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
-                            <p:menuitem value="Estadistica Album" action="#{adminController.pedidos()}"/>
-                            <p:menuitem value="Estadistica Cancion" action="#{adminController.estadisticasCancion()}"/>
+                            <p:menuitem value="Estadistica Cancion" action="#{adminController.pedidos()}"/>
+                            <p:menuitem value="Estadistica Album" action="#{adminController.estadisticasCancion()}"/>
                             <p:menuitem value="Estadistica Artista" action="#{adminController.estadisticasArtistas()}"/>
                             <p:menuitem value="Estadistica Genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
@@ -68,7 +68,7 @@
                     
                     <br></br><br></br>
                     <p:inputText type="text" id="albumname" class="campotexto" placeholder="Nombre Album" value="#{crearalbumController.album.name}" required="true"/>
-                    <p:inputText type="number" id="valoralbum" class="campotexto" placeholder="Valor en pesos colombianos" value="#{crearalbumController.album.price}" required="true"/> 
+                    <p:inputNumber id="valoralbum" class="campotexto" placeholder="Valor en pesos colombianos" value="#{crearalbumController.album.price}" required="true"/> 
     
                     <br></br>
                     

@@ -20,24 +20,21 @@ import pojo.Sale;
  *
  * @author Joseph
  */
-@Named(value = "pedidoController")
+@Named(value = "estadisticasGenero")
 @RequestScoped
-public class PedidoController {
-
+public class EstadisticasGenero {
+    
     private List<Sale> orderList;
     private BarChartModel barModel;
     private Sale order;
-
     /**
-     * Creates a new instance of PedidoController
+     * Creates a new instance of EstadisticasGenero
      */
-    public PedidoController() {
-
+    public EstadisticasGenero() {
     }
-
     @PostConstruct
     public void init() {
-        orderList = new DAOSale().saleListSong();
+        orderList = new DAOSale().saleListGenre();
         createBarModels();
     }
 
@@ -47,10 +44,10 @@ public class PedidoController {
 
     private void createBarModel() {
         barModel = initBarModel();
-        barModel.setTitle("Canciones más vendidas");
+        barModel.setTitle("Géneros con más ventas");
         barModel.setLegendPosition("ne");
         Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel("Canciones");
+        xAxis.setLabel("Género");
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Cantidad");
         yAxis.setMin(0);
@@ -59,11 +56,11 @@ public class PedidoController {
 
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
-        ChartSeries songs = new ChartSeries();
-        songs.setLabel("Canciones");
-        List<Sale> saleList = new DAOSale().saleListSongCount();
+        ChartSeries genres = new ChartSeries();
+        genres.setLabel("Géneros");
+        List<Sale> saleList = new DAOSale().saleListGenreCount();
         for (Sale sale : saleList) {
-            songs.set(sale.getSongName(), sale.getCount());
+            genres.set(sale.getGenre(), sale.getCount());
         }
         /*songs.set("2004", 52);
         songs.set("2005", 60);
@@ -71,7 +68,7 @@ public class PedidoController {
         songs.set("2007", 135);
         songs.set("2008", 120);*/
 
-        model.addSeries(songs);
+        model.addSeries(genres);
 
         return model;
     }
@@ -99,5 +96,5 @@ public class PedidoController {
     public void setBarModel(BarChartModel barModel) {
         this.barModel = barModel;
     }
-
+    
 }

@@ -53,7 +53,7 @@
                     <h3>ALBUM'S</h3>
                     <br></br>
                     <p:selectOneMenu id="album" value="#{comprarAlbum.album.id_album}">
-                        <f:selectItem itemLabel="ALBUM" itemValue=""/>
+                        
                         <f:selectItems value="#{comprarAlbum.albumList()}"/>
                         <f:ajax execute="album" render="album"/>
                     </p:selectOneMenu>

@@ -52,7 +52,7 @@ public class ComprarAlbum {
         }
         return artistList;
     }
-    
+
     public List<SelectItem> albumList() {
 
         albumList = new ArrayList<SelectItem>();
@@ -66,28 +66,30 @@ public class ComprarAlbum {
         //albums = new DAOAlbum().albumList();
         for (Album album : albums) {
             SelectItem albumItem = new SelectItem(album.getId_album(), album.getName());
-            
+
             albumList.add(albumItem);
         }
         return albumList;
     }
-    
+
     public void onItemUnselect(UnselectEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
-         
+
         FacesMessage msg = new FacesMessage();
         msg.setSummary("Item unselected: " + event.getObject().toString());
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
-         
+
         context.addMessage(null, msg);
     }
 
     public void sendData() {//recpcion y muestra de datos desde el boton por consola
 
         boolean success = new DAOSale().insertSale(artist.getId_artist(), album.getId_album());
-        if (success==true) {
+        if (success == true) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Compra exitosa"));
             System.out.println("Registrado con éxito");
-        }else{
+        } else {
             System.out.println("Chúpelo prro");
         }
     }

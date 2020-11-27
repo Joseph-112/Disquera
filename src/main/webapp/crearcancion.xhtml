@@ -38,8 +38,8 @@
                         </p:submenu>
 
                         <p:submenu label="ESTADISTICAS">
-                            <p:menuitem value="Estadistica Album" action="#{adminController.pedidos()}"/>
-                            <p:menuitem value="Estadistica Cancion" action="#{adminController.estadisticasCancion()}"/>
+                            <p:menuitem value="Estadistica Cancion" action="#{adminController.pedidos()}"/>
+                            <p:menuitem value="Estadistica Album" action="#{adminController.estadisticasCancion()}"/>
                             <p:menuitem value="Estadistica Artista" action="#{adminController.estadisticasArtistas()}"/>
                             <p:menuitem value="Estadistica Genero" action="#{adminController.estadisticasGenero()}"/>
                         </p:submenu>
@@ -80,7 +80,7 @@
                     <p:inputText type="text" id="songName" class="campotexto" placeholder="Nombre Canción" value="#{crearcancion.song.name}" required="true"/>
                     <br></br><br></br>
                     <p:inputText type="numeric" id="songPrice" class="campotexto" placeholder="Precio Canción" value="#{crearcancion.song.price}" required="true"/>
-                    <br></br><br></br>
+                    
                     <h:commandButton class="botones" actionListener="#{crearcancion.sendData()}" value="crear" type="submit" ></h:commandButton>
                 </h:form>
 

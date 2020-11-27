@@ -38,7 +38,9 @@
                 </h:form>
             </div>
             <h:form>
+
                 <div class="contdatos" id="comprar">
+
                     <br></br>
                     <h2>CANCIONES DISPONIBLES POR ARTISTAS</h2>
                     <br></br><br></br>
@@ -49,12 +51,12 @@
                         <f:selectItems value="#{comprarCancionController.artistList()}"/>
                         <f:ajax event="change" execute="artist" render="song"/>
                     </p:selectOneMenu>
-                    
+
                     <br></br>
                     <h3>Canciónes</h3>
                     <br></br>
                     <p:selectOneMenu id="song" value="#{comprarCancionController.song.id_song}" >
-                        <f:selectItem itemLabel="artista" itemValue=""/>
+                        <!--<f:selectItem itemLabel="artista" itemValue=""/>-->
                         <f:selectItems value="#{comprarCancionController.songList()}"/>
                         <f:ajax event="change" execute="song" render="sSelected"/>
                     </p:selectOneMenu>
@@ -66,6 +68,7 @@
                     <h:commandButton class="bot" actionListener="#{comprarCancionController.sendData()}" value="COMPRAR"  ></h:commandButton>
 
                 </div>
+
             </h:form>
         </div> 
         <br></br>
