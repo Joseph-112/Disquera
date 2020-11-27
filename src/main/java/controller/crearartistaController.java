@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
 import javax.faces.model.SelectItem;
 import model.DAOArtist;
 import model.DAOGenre;
@@ -75,6 +77,8 @@ public class crearartistaController implements Serializable {
 
         boolean success = new DAOArtist().insertArtist(getNombreartista(), musicGenre.getId_genre(),country.getId_nationality(),getRuta_temporal(),  getFechanacimiento());
         if (success==true) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Artista registrado con éxito"));
             System.out.println("Registrado con éxito");
         }else{
             System.out.println("Chúpelo prro");

@@ -12,7 +12,7 @@ package pojo;
 public class Sale {
     
     private int id_sale,id_song,id_user,id_album,id_genre,count;
-    private String songName, albumName,artistName,genre;
+    private String songName, albumName,artistName,genre,image;
     private double price;
     
 
@@ -102,6 +102,14 @@ public class Sale {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

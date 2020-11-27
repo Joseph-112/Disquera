@@ -7,6 +7,8 @@ package controller;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import model.DAOGenre;
 import pojo.Genre;
 
@@ -31,6 +33,8 @@ public class creargeneroController {
 
         boolean success = new DAOGenre().insertGenre(genre.getGenre());
         if (success == true) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Género musical registrado con éxito"));
             System.out.println("Registrado con éxito");
         } else {
             System.out.println("Error");

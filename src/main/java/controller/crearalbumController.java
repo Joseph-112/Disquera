@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import model.DAOAlbum;
 import model.DAOArtist;
@@ -69,6 +71,8 @@ public class crearalbumController {
         DAOAlbum albumdata = new DAOAlbum();
         boolean success = new DAOAlbum().insertAlbum(album.getName(),artist.getId_artist(),album.getPrice(), genre.getId_genre());
         if (success==true) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Album registrado con éxito"));
             System.out.println("Registrado con éxito");
         }else{
             System.out.println("Chúpelo prro");

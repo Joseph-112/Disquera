@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.application.FacesMessage;
 import javax.faces.model.SelectItem;
 import model.DAOAlbum;
 import model.DAOArtist;
@@ -89,6 +91,8 @@ public class crearcancionController {
 
         boolean success = new DAOSong().insertSong( this.artist.getId_artist() ,this.album.getId_album(), this.musicGenre.getId_genre(), this.song.getPrice(), this.song.getName());
         if (success == true) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Canción registrada con éxito"));
             System.out.println("Registrado con éxito");
         } else {
             System.out.println("Error");

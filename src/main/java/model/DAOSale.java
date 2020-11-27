@@ -370,6 +370,7 @@ public class DAOSale {
                 //newSale.setSongName(result.getString(10));
                 //newSale.setAlbumName(result_album.getString(8));
                 newSale.setArtistName(result_album.getString(8));
+                newSale.setImage(result_album.getString(9));
 
                 System.out.println("\n\n Received data: \n Id: " + newSale.getId_sale() + "\nPrecio: " + newSale.getPrice());
                 saleList.add(newSale);
